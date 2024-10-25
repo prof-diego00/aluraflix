@@ -1,0 +1,670 @@
+<html lang="pt-br">
+<head>
+    <link rel="shortcut icon" type="image" href="botao-play.png">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Kalnia+Glaze:wght@100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<title>
+  Aluraflix 
+</title>
+<style>
+@import url("styles/header.css");
+@import url("styles/banner.css");
+@import url("styles/carrossel.css");
+@import url("styles/topicos.css");
+@import url("styles/contato.css");
+@import url("styles/rodapé.css");
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--dark);
+  color: var(--light);
+}
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+h3 {
+  size: 10px;
+  position:sticky;
+  text-align: left;
+  text-shadow: #141414;
+}
+p {
+  width: auto;
+  text-align:left;
+  position: relative;
+  text-shadow: #141414;
+  margin-left: 1rem; /* Adiciona um espaço entre o card e o texto */
+}
+.p-pag {
+  width: auto;
+  text-align:left;
+  position: relative;
+  text-shadow: #141414;
+}
+.movie-grid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 3rem;
+  position:sticky;
+}
+
+.movie-card {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  text-align: left;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  text-align: left;
+}
+
+.movie-poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  text-align: left;
+}
+.movie-poster-pag {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+.movie-card-pag {
+  position: relative;
+  object-position: right;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+} /* container do iframe */
+
+
+.movie-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%);
+  text-align: left;
+}
+
+.search-bar {
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: var(--light);
+  width: 300px;
+}
+
+.search-bar:focus {
+  outline: none;
+  background: rgba(255,255,255,0.2);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.featured {
+  animation: pulse 2s infinite;
+}
+.progress-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    z-index: 1001;
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: #007bff;
+    width: 0%;
+    transition: width 0.2s ease;
+  }
+
+  .scroll-indicator {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .scroll-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .scroll-dot.active {
+    background: #007bff;
+    transform: scale(1.5);
+  }
+
+  .scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+  }
+
+  .scroll-to-top.visible {
+    opacity: 1;
+  }
+
+  /* Animation for section content */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .movie-container {
+  display: flex; /* Cria um container flexbox */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+  text-align: left;
+}
+
+.movie-card-pag {
+  position: relative;
+  text-align: left;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  flex-shrink: 0; /* Evita que o card seja comprimido se houver espaço insuficiente */
+}
+
+#o-duble {
+  background-color: #F2B705;
+  background-size: cover; /* Adjust the value as needed */
+  color: #fdfdfd;
+  text-shadow: #000000;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+#Free-guy {
+  background-color: #265C8C;
+  background-size: cover; /* Adjust the value as needed */
+  color: #ffffff;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+#Pretendente-Surpresa {
+  background-color: #BBDDF2;
+  background-size: cover; /* Adjust the value as needed */
+  color: #000000;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+#Love-Next-Door {
+  background-color: #F2B705;
+  background-size: cover; /* Adjust the value as needed */
+  color: #ffffff;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+.marcado {
+  color: #000;
+  background-color: hsla(202, 66%, 85%, 0.692); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
+}
+
+.comedia {
+  background-color: #aaddec;
+  color: #141414;
+  padding: 20px;
+}
+.categoria-videos {
+    display: flex;
+    overflow-x:scroll; /* Hide the horizontal scrollbar */
+    gap: 0px;
+    justify-content: flex-start;
+}
+.scroll-container {
+    overflow-y: auto;
+    height: 200px;
+    /* Estiliza a barra de rolagem */
+    scrollbar-width: thin;
+    scrollbar-color: #642B69 #0E0412;
+}
+
+/* Ocultar a barra de rolagem vertical e personalizar a horizontal */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ec8804;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #5f3600;
+}
+
+.categoria-videos img {
+    opacity: 0.5;
+    height: 200px;
+}
+
+.categoria-videos img:hover {
+    opacity: 1.0;
+    border: 1px solid rgb(238, 163, 2);
+}
+
+.video-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.scroll-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.scroll-buttons button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.scroll-buttons button:hover {
+    background-color: #e0e0e0;
+}
+:root {
+  --primary: #e50914;
+  --dark: #141414;
+  --light: #ffffff;
+  --amarelo-degrade: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  --amarelo-e-azul-degrade: linear-gradient(to right bottom, #010326, #3d1e49, #7f325f, #bf4d64, #f2785c);
+}
+.chamada {
+    background:var(--amarelo-e-azul-degrade);
+    margin: auto;
+    padding-top: 2px;
+    display: flex;
+    justify-content: center;
+    object-position: center;
+}
+</style>
+</head>
+<body>
+  <a href="#home" class="scroll-to-top">↑</a>
+  <header class="cabeçalho">
+    <div class="container">
+      <input type="checkbox" id="menu" class="container__botao">
+      <label for="menu">
+        <span class="cabeçalho__menu-hamburguer container__imagem"></span>
+      </label>
+      <ul class="lista-menu">
+        <li class="lista-menu__item">
+          <a href="terror.html" class="lista-menu__link">Terror</a>
+        </li>
+        <li class="lista-menu__item">
+          <a href="suspense.html" class="lista-menu__link">Suspense</a>
+        </li>
+        <li class="lista-menu__item">
+          <a href="comedia.html" class="lista-menu__link">Comédia</a>
+        </li>
+        <li class="lista-menu__item">
+          <a href="aventura.html" class="lista-menu__link">Aventura</a>
+        </li>
+        <li class="lista-menu__item">
+          <a href="doramas.html" class="lista-menu__link">Doramas</a>
+        </li>
+      </ul>
+      <a href="index.html"><img src="img/logo-alura.png" alt="Logo da Aluraflix" class="container__imagem"></a>
+    </div>
+    <div class="container">
+      <a href="#"><img src="img/Favoritos.svg" alt="Meus favoritos" class="container__imagem"></a>
+      <a href="#"><img src="img/Compras.svg" alt="Carrinhos de compras" class="container__imagem"></a>
+      <a href="#"><img src="img/Usuario.svg" alt="Meu perfil" class="container__imagem"></a>
+    </div> 
+</header>
+<section class="banner">
+  <h2 class="banner__titulo">Já sabe o que vai assistir?</h2>
+  <p class="banner__texto">Encontre em nosso repositório o que precisa para seu Entretenimento!</p>
+  <input type="search" class="banner__pesquisa" placeholder="Qual será sua próxima série ou Filme Favorito?">
+</section>
+<section class="chamada">
+  <div class="chamada-texto">
+      <h1>Free Guy - Assumindo o Controle</h1>
+      <p>Em Free Guy - Assumindo o Controle, Guy é um personagem não-jogador (NPC) em Free City, um jogo de RPG online multijogador massivo (MMORPG) desenvolvido pela Soonami Studio. Sem saber que o mundo em que vive é um videogame, ele trabalha como caixa de banco ao lado de seu melhor amigo, o segurança do banco Buddy, em uma entediante rotina. No mundo real, Millie Rusk está tentando encontrar evidências de que o código-fonte que ela escreveu junto com seu amigo Walter "Keys" McKey foi roubado pelo desenvolvedor chefe de Soonami, Antwan Hovachelik. No jogo, Millie, que joga como Molotov Girl, chama a atenção de Guy cantando sua música favorita, "Fantasy" de Mariah Carey, e ele começa a se desviar de sua programação. Pegando um par de óculos de sol de um jogador roubando o banco, Guy vê Free City através de uma versão única da interface do jogador e surpreendentemente vira um jogador. Agora ele precisa aceitar sua realidade e lidar com o fato de que é o único que pode salvar o mundo.</p>
+  </div>
+<div style="text-align: center;" class="container">
+<iframe width="500" height="315" src="https://www.youtube.com/embed/iLcwgsQ0V28?si=v4uFnQBNE60csrx9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</a> 
+</div>
+</section>
+<section class="expositor">
+  <h1>Comédia</h1>
+  <main class="movie-grid">
+    <div class="movie-card featured">
+        <img class="movie-poster" alt="O Dublê " title="O Dublê " src="https://br.web.img3.acsta.net/c_310_420/img/20/fd/20fd28beb20ff9ccf9f405fcf1820c49.jpg" width="200" height="300">
+        <div class="movie-info">
+          <h3>O Dublê </h3>
+          <p>2024 • Ação/Comédia</p>
+          <p>2h 6m</p>
+        </div>
+      </div>
+    
+    <div class="movie-card">
+      <img class="movie-poster" alt="Free Guy" title="Free Guy" src="https://br.web.img2.acsta.net/pictures/21/06/10/20/47/1652456.jpg" width="200" height="300">
+      <div class="movie-info">
+        <h3>Free Guy - Assumindo o Controle</h3>
+        <p>2021 • Ação/Comédia</p>
+        <p>1h55m</p>
+      </div>
+    </div>
+    
+    <div class="movie-card">
+      <img class="movie-poster" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <div class="movie-info">
+        <h3>NOME DA SERIE/FILME</h3>
+        <p>2018 • Romance</p>
+        <p>1° temporada</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img class="movie-poster" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <div class="movie-info">
+        <h3>NOME DA SERIE/FILME</h3>
+        <p>2018 • Romance</p>
+        <p>1° temporada</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img class="movie-poster" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <div class="movie-info">
+        <h3>NOME DA SERIE/FILME</h3>
+        <p>2018 • Romance</p>
+        <p>1° temporada</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img class="movie-poster" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <div class="movie-info">
+        <h3>NOME DA SERIE/FILME</h3>
+        <p>2018 • Romance</p>
+        <p>1° temporada</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img class="movie-poster" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <div class="movie-info">
+        <h3>NOME DA SERIE/FILME</h3>
+        <p>2018 • Romance</p>
+        <p>1° temporada</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img class="movie-poster" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <div class="movie-info">
+        <h3>NOME DA SERIE/FILME</h3>
+        <p>2018 • Romance</p>
+        <p>1° temporada</p>
+      </div>
+    </div>
+  </main>  
+  <script>
+  document.querySelectorAll('.movie-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const movieTitle = card.querySelector('h3').textContent;
+    const returnToId = 'nosso-destino'; // Replace with the actual ID you want to return to
+    window.location.href = `file:///D:/02%20-%20TECNOLOGIA%20E%20ROBOTICA/4%C2%B0%20BIMESTRE/aluraflix-2-e/doramas.html/${movieTitle.toLowerCase().replace(/\s+/g, '-')}`;
+    window.history.pushState(null, null, `#${returnToId}`); // Add this line to push the specified ID to the history
+  });
+});
+  
+  const searchBar = document.querySelector('.search-bar');
+  searchBar.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    
+    document.querySelectorAll('.movie-card').forEach(card => {
+      const title = card.querySelector('h3').textContent.toLowerCase();
+      if (title.includes(searchTerm)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+  
+  // Add scroll effect to navigation
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.nav');
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(0,0,0,0.9)';
+    } else {
+      nav.style.background = 'linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%)';
+    }
+  });
+  </script>
+   <div class="progress-container">
+    <div class="progress-bar"></div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-dot active" data-section="o-duble"></div>
+    <div class="scroll-dot" data-section="Park-Seo-Joon"></div>
+    <div class="scroll-dot" data-section="Pretendente-Surpresa"></div>
+    <div class="scroll-dot" data-section="Love-Next-Door"></div>
+    <div class="scroll-dot" data-section="#"></div>
+    <div class="scroll-dot" data-section="#"></div>
+  </div>
+
+  <section id="o-duble" class="comedia">
+    <div class="content fade-in">
+      <h1>O Dublê</h1>
+      <div class="movie-container">
+      <img class="movie-card-pag" alt="O Dublê Trailer" title="O Dublê Trailer" src="https://br.web.img3.acsta.net/c_310_420/img/20/fd/20fd28beb20ff9ccf9f405fcf1820c49.jpg" width="200" height="300">
+      <p>Não recomendado para menos de 14 anos
+        O Dublê é um filme de ação e comédia dirigido por David Leitch (Trem-Bala, Deadpool 2) e baseado na série Duro na Queda, sucesso dos anos 80. A história acompanha Colt Seavers (Ryan Gosling), um dublê de Hollywood que precisou abandonar a vida de acrobacias perigosas após sofrer um acidente que quase acabou com a vida e a carreira dele. Porém, um tempo depois, ele é chamado de volta para trabalhar em um filme dirigido por sua ex-namorada, Jody Moreno (Emily Blunt), realizando as cenas mais intensas de ação de Tom Ryder (Aaron Taylor-Johnson), protagonista do longa. Durante as filmagens, este herói da classe trabalhadora abraçou a missão e a responsabilidade de desvendar um grande mistério: o desaparecimento misterioso de Tom. E, enquanto grava suas sequências e tenta entender o sumiço do astro de Hollywood, Colt descobre que pode ter se envolvido em algo muito maior do que um simples trabalho como dublê, tudo isso enquanto tenta reconquistar o amor da sua vida.</p>
+    </div>
+    </div>
+  </section>
+
+  <section id="Free-Guy" class="comedia">
+    <div class="content fade-in">
+      <h1>Free Guy - Assumindo o Controle</h1>
+      <div class="movie-container">
+      <img class="movie-card-pag" alt="Free Guy - Assumindo o Controle" title="Free Guy - Assumindo o Controle" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <p>Texto sinopse sobre o Filme/Série</p>
+    </div>
+    </div>
+  </section>
+
+  <section id="NOME DA SERIE/FILME" class="comedia">
+    <div class="content fade-in">
+      <h1>NOME DA SERIE/FILME</h1>
+      <div class="movie-container">
+      <img class="movie-card-pag" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <p>Texto sinopse sobre o Filme/Série</p>
+    </div>
+    </div>
+  </section>
+
+  <section id="NOME DA SERIE/FILME" class="comedia">
+    <div class="content fade-in">
+      <h1>NOME DA SERIE/FILME</h1>
+      <div class="movie-container">
+      <img class="movie-card-pag" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <p>Texto sinopse sobre o Filme/Série</p>
+    </div>
+    </div>
+  </section>
+
+  <section id="NOME DA SERIE/FILME" class="comedia">
+    <div class="content fade-in">
+      <h1>NOME DA SERIE/FILME</h1>
+      <div class="movie-container">
+      <img class="movie-card-pag" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <p>Texto sinopse sobre o Filme/Série</p>
+    </div>
+    </div>
+  </section>
+
+<script>
+// Progress bar
+window.addEventListener('scroll', () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  document.querySelector(".progress-bar").style.width = scrolled + "%";
+});
+
+// Active section tracking
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-links a');
+const scrollDots = document.querySelectorAll('.scroll-dot');
+const scrollTopButton = document.querySelector('.scroll-to-top');
+
+const observerOptions = {
+  threshold: 0.5
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Update navigation
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('../aluraflix-2-e/index.html').slice(1) === entry.target.id) {
+          link.classList.add('active');
+        }
+      });
+
+      // Update scroll dots
+      scrollDots.forEach(dot => {
+        dot.classList.remove('active');
+        if (dot.dataset.section === entry.target.id) {
+          dot.classList.add('active');
+        }
+      });
+
+      // Animate content
+      entry.target.querySelector('.fade-in').classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+sections.forEach(section => {
+  observer.observe(section);
+});
+
+// Scroll to top button visibility
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 300) {
+    scrollTopButton.classList.add('visible');
+  } else {
+    scrollTopButton.classList.remove('visible');
+  }
+});
+
+// Scroll dot click handlers
+scrollDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const section = document.getElementById(dot.dataset.section);
+    section.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Prevent default action and add smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const section = document.querySelector(anchor.getAttribute('href'));
+    section.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+<section class="tópicos">
+    <h2 class="tópicos__titulo">TÓPICOS VISITADOS RECENTEMENTE</h2>
+    <ul class="tópicos__lista">
+      <li class="tópicos__item"><a href="#" class="tópicos__link">Android</a></li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">Marketing Digital</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">Agile</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">Startups</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">HTML & CSS</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">Python</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">OO</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">Java</a>
+      </li>
+    </ul>
+  </section>
+</body>
+</html>

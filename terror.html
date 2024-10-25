@@ -1,0 +1,421 @@
+<html lang="pt-br">
+<head>
+    <link rel="shortcut icon" type="image" href="botao-play.png">
+    <link rel="stylesheet" href="styles/terror.css" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+<title>
+  Aluraflix 
+</title>
+<style>
+  @import url("styles/header.css");
+@import url("styles/banner.css");
+@import url("styles/carrossel.css");
+@import url("styles/topicos.css");
+@import url("styles/contato.css");
+@import url("styles/rodapé.css");
+
+body {
+    color:rgb(255, 255, 255);
+    background:rgb(11, 9, 9);
+    margin: 0px ;
+    font-family: "Chakra Petch", sans-serif;
+    margin-bottom: 100px;
+    font-family: var(--fonte-principal);
+    font-size: 25px;
+    font-weight: 400;
+    background-color: var(--cor-de-fundo)
+    }
+
+header{
+
+    border-bottom: solid 2px rgb(255, 254, 254);
+    padding: 20px;
+    font-size: 32px;
+    color: rgb(255, 255, 255);
+}
+
+.chamada {
+    background: rgba(255, 251, 0, 0.692);
+    margin: auto;
+    padding-top: 2px;
+    display: flex;
+    justify-content: center;
+}
+
+.chamada-terror {
+    background-image: url('https://cinepop.com.br/wp-content/uploads/2016/07/coisa_3.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    margin:auto;
+    padding-top: 2px;
+    display: flex;
+    justify-content: center;
+    background-position:left;
+}
+
+.chamada-texto {
+    margin-right: 20px;
+}
+
+.chamada-texto {
+    margin-right: 5%;
+}
+
+.chamada-texto-terror {
+    margin-right: 5%;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+    margin: auto;
+    color:rgb(62, 97, 6)
+}
+
+p {
+    text-align: justify;
+    font-size: 20px;
+    text-align: center;
+}
+.marcado {
+  color: #000;
+  background-color: hsla(0, 0%, 98%, 0.39); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
+}
+
+h3 {
+    font-size: 25px;
+    text-align:center;
+    margin: auto;
+    color:rgb(254, 255, 253)
+}
+
+hr {
+    color: #e00000;
+}
+.categoria-videos {
+    display: flex;
+    overflow-x: auto;
+    gap: 5px;
+}
+
+.categoria {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 51px;
+}
+
+.categoria-videos {
+    display: flex;
+    overflow-x: auto;
+    gap: 50px;
+    align-items: center;
+}
+
+.categoria {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 51px;
+}
+
+.categoria-videos img {
+    opacity: 0.5;
+    height: 200px;
+}
+.categoria-videos img:hover {
+    opacity: 1.0;
+    border: 1px solid rgb(252, 6, 6);
+}
+.categoria h2 {
+    color: rgb(197, 53, 53)
+}
+
+:root {
+    --cor-de-fundo: #000000;
+    --branco: rgb(253, 252, 252);
+    --preto: rgb(0, 0, 0);
+    --laranja: #b36212;
+    --azul-degrade: linear-gradient(97.54deg, #062af3 35.49%, #00fdbe 165.37%);
+    --fonte-principal: "Poppins";
+    --azul: #1a05df;
+    --amarelo-degrade: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); 
+    --vermelho-degrade: linear-gradient(90deg, rgba(143,1,1,1) 0%, rgba(255,0,0,1) 100%);
+    --preto-degrade:    linear-gradient(#000000, #140E0E);
+}
+  h1 {
+    text-align: center;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px #ff0000;
+  }
+  hr {
+    color: #b30000;
+  }
+  p {
+    text-align: justify;
+    font-family: Arial, sans-serif;
+    color: #cccccc;
+  }
+  .back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #ff0000;
+    text-decoration: none;
+  }
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  .scare-box {
+    background-color: #1a0000;
+    border: 2px solid #b30000;
+    padding: 15px;
+    margin: 20px 0;
+    position: relative;
+  }
+  .scare-box::before {
+    content: "BOO!";
+    position: absolute;
+    top: -15px;
+    left: 10px;
+    background-color: #000;
+    padding: 5px 10px;
+    font-size: 1.2em;
+    color: #ff0000;
+  }
+  .shadows-into-light-regular {
+  font-family: "Shadows Into Light", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.aluraflix-link {
+    color: rgb(255, 255, 255); /* Altera a cor para vermelho */
+    text-decoration: none; /* Remove o sublinhado */
+  }
+
+  .div {
+    width: 50%; /* Define a largura do container */
+}
+
+.video-container {
+    display: flex; /* Activate flexbox */
+    justify-content: flex-end; /* Align elements to right */
+  
+}
+
+.iframe {
+    float: right;
+  }
+  .categoria-videos {
+    display:flex;
+    overflow-x: auto;
+    gap: 10px;
+    justify-content:right /* Alinha os itens para a direita */
+  }
+
+.categoria {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 50px;
+}
+
+.categoria-videos img {
+    opacity: 0.5;
+    height: 200px;
+}
+
+.categoria-videos img:hover {
+    opacity: 1.0;
+    border: 3px solid rgb(255, 0, 0);
+}
+
+.categoria h2 {
+    color: rgb(255, 255, 255);
+}
+
+.aluraflix-link {
+    color: rgb(255, 255, 255); /* Altera a cor para vermelho */
+    text-decoration: none; /* Remove o sublinhado */
+  }
+
+  .div {
+    width: 50%; /* Define a largura do container */
+}
+
+.video-container {
+    display: flex; /* Activate flexbox */
+    justify-content: flex-end; /* Align elements to right */
+  
+}
+.scroll-container {
+    overflow-y: auto;
+    height: 200px;
+    /* Estiliza a barra de rolagem */
+    scrollbar-width: thin;
+    scrollbar-color: #642B69 #0E0412;
+}
+
+/* Ocultar a barra de rolagem vertical e personalizar a horizontal */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ec8804;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #5f3600;
+}
+
+.categoria-videos img {
+    opacity: 0.5;
+    height: 200px;
+}
+
+.categoria-videos img:hover {
+    opacity: 1.0;
+    border: 1px solid rgb(238, 163, 2);
+}
+
+.video-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.scroll-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.scroll-buttons button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.scroll-buttons button:hover {
+    background-color: #e0e0e0;
+}
+  </style>
+</head>
+<body>
+    <header class="cabeçalho">
+    <div class="container">
+      <input type="checkbox" id="menu" class="container__botao">
+      <label for="menu">
+        <span class="cabeçalho__menu-hamburguer container__imagem"></span>
+      </label>
+      <ul class="lista-menu">
+        <li class="lista-menu__item">
+          <a href="terror.html" class="lista-menu__link">Terror</a>
+        </li>
+        <li class="lista-menu__item">
+          <a href="suspense.html" class="lista-menu__link">Suspense</a>
+        </li>
+        <li class="lista-menu__item">
+          <a href="comedia.html" class="lista-menu__link">Comédia</a>
+        </li>
+        <li class="lista-menu__item">
+          <a href="aventura.html" class="lista-menu__link">Aventura</a>
+        </li>
+        <li class="lista-menu__item">
+          <a href="doramas.html" class="lista-menu__link">Doramas</a>
+      </ul>
+      <a href="index.html"><img src="img/logo-alura.png" alt="Logo da Aluraflix" class="container__imagem"></a>
+    </div>
+    <div class="container">
+      <a href="#"><img src="img/Favoritos.svg" alt="Meus favoritos" class="container__imagem"></a>
+      <a href="#"><img src="img/Compras.svg" alt="Carrinhos de compras" class="container__imagem"></a>
+      <a href="#"><img src="img/Usuario.svg" alt="Meu perfil" class="container__imagem"></a>
+    </div> 
+</header>
+<section class="banner">
+  <h2 class="banner__titulo">Já sabe o que vai assistir?</h2>
+  <p class="banner__texto">Encontre em nosso repositório o que precisa para seu Entretenimento!</p>
+  <input type="search" class="banner__pesquisa" placeholder="Qual será sua próxima série ou Filme Favorito?">
+  </section>
+    <section class="chamada-terror">
+        <div class="chamada-texto-terror">
+            <h1>It: A coisa</h1>
+<p class="marcado">Um grupo de crianças se une para investigar o misterioso desaparecimento de vários jovens em sua cidade. Eles descobrem que o culpado é Pennywise, um palhaço cruel que se alimenta de seus medos e cuja violência teve origem há vários séculos.</p>
+</div>
+    <div>
+        <h1> Trailer Oficial:</h1>
+            <h3>IT: A Coisa</h3>
+</div>
+<div>
+    <iframe width="400" height="315" src="https://www.youtube.com/embed/dD264ZjfKlk?si=jE3nsRByL-konFYc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</a> 
+</div>
+<hr>
+</section>
+<hr>
+  <section class="Categorias">
+      <h2>Filmes e Séries</h2>
+      <div class="categoria-videos">
+          <a href="https://www.youtube.com/watch?v=FDj9xPS62uw" title="Azrael Trailer" target="_blank">
+          <img src="https://img.youtube.com/vi/FDj9xPS62uw/maxresdefault.jpg"></a>
+          <a href="https://www.youtube.com/watch?v=bY4NSJfwTQs" title="Handling The Undead" target="_blank">
+          <img src="https://img.youtube.com/vi/bY4NSJfwTQs/maxresdefault.jpg"></a>        
+          <a href="https://www.youtube.com/watch?v=B73g786Izg0" title="Handling The Undead" target="_blank">
+        <img src="https://img.youtube.com/vi/B73g786Izg0/maxresdefault.jpg"></a>        
+        <a href="https://www.youtube.com/watch?v=ewxS9Z-XXYo" title="Handling The Undead" target="_blank">
+        <img src="https://img.youtube.com/vi/ewxS9Z-XXYo/maxresdefault.jpg"></a>
+        <a href="https://www.youtube.com/watch?v=JrEnvWxjYCo" title="Handling The Undead" target="_blank">
+        <img src="https://img.youtube.com/vi/JrEnvWxjYCo/maxresdefault.jpg"></a>
+</section>
+<hr>
+<section class="secao-terror" href="terror.html">
+  <h1>Filmes de Terror</h1>
+            <p>Filmes de terror são projetados para evocar medo, terror e choque. Eles geralmente exploram temas sombrios e apresentam elementos sobrenaturais ou emoções psicológicas. De filmes clássicos de monstros a horrores psicológicos modernos, esse gênero mantém o público na ponta dos assentos, corações acelerados e olhos semicerrados.</p>
+<p>Os principais elementos dos filmes de terror incluem:</p>
+  <ul>
+    <li>Música de suspense e efeitos sonoros</li>
+    <li>Cenários sombrios e assustadores</li>
+    <li>Sustos repentinos e técnicas de construção de tensão</li>
+    <li>Monstros, fantasmas ou vilões psicopatas</li>
+    <li>Exploração de medos e tabus primitivos</li>
+    </ul>
+    <p>Seja você fã de filmes de terror, thrillers sobrenaturais ou terror psicológico, esse gênero oferece uma fuga emocionante para os reinos do assustador e desconhecido.</p>    
+</section>
+<div> 
+  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1932667652&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/horrormusiccollection" title="Horror Music Collection" target="_blank" style="color: #cccccc; text-decoration: none;">Horror Music Collection</a> · <a href="https://soundcloud.com/horrormusiccollection/dramatic-laughs" title="Dramatic Laughs" target="_blank" style="color: #cccccc; text-decoration: none;">Dramatic Laughs</a></div>
+</div>
+<section class="tópicos">
+    <h2 class="tópicos__titulo">TÓPICOS VISITADOS RECENTEMENTE</h2>
+    <ul class="tópicos__lista">
+      <li class="tópicos__item"><a href="#" class="tópicos__link">Android</a></li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">Marketing Digital</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">Agile</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">Startups</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">HTML & CSS</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">Python</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">OO</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">Java</a>
+      </li>
+    </ul>
+  </section>
+  <a href="index.html" class="back-link">Escape de volta para o Início (se você ousar)</a>
+</body>
+</html>

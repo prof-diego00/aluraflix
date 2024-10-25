@@ -1,0 +1,617 @@
+<html lang="pt-br">
+<head>
+    <link rel="shortcut icon" type="image" href="botao-play.png">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Kalnia+Glaze:wght@100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<title>
+  Aluraflix 
+</title>
+<style>
+  @import url("styles/header.css");
+@import url("styles/banner.css");
+@import url("styles/carrossel.css");
+@import url("styles/topicos.css");
+@import url("styles/contato.css");
+@import url("styles/rodapé.css");
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--dark);
+  color: var(--light);
+}
+h3 {
+  size: 10px;
+  position:sticky;
+  text-align: left;
+  text-shadow: #141414;
+}
+p {
+  width: auto;
+  text-align:left;
+  position: relative;
+  text-shadow: #141414;
+  margin-left: 1rem; /* Adiciona um espaço entre o card e o texto */
+}
+.p-pag {
+  width: auto;
+  text-align:left;
+  position: relative;
+  text-shadow: #141414;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.movie-grid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 3rem;
+  position:sticky;
+}
+
+.movie-card {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  text-align: left;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  text-align: left;
+}
+
+.movie-poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  text-align: left;
+}
+.movie-poster-pag {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+.movie-card-pag {
+  position: relative;
+  object-position: right;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+
+.movie-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%);
+  text-align: left;
+}
+
+.search-bar {
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: var(--light);
+  width: 300px;
+}
+
+.search-bar:focus {
+  outline: none;
+  background: rgba(255,255,255,0.2);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.featured {
+  animation: pulse 2s infinite;
+}
+.progress-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    z-index: 1001;
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: #007bff;
+    width: 0%;
+    transition: width 0.2s ease;
+  }
+
+  .scroll-indicator {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .scroll-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .scroll-dot.active {
+    background: #007bff;
+    transform: scale(1.5);
+  }
+
+  .scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+  }
+
+  .scroll-to-top.visible {
+    opacity: 1;
+  }
+
+  /* Animation for section content */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .movie-container {
+  display: flex; /* Cria um container flexbox */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+  text-align: left;
+}
+
+.movie-card-pag {
+  position: relative;
+  text-align: left;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  flex-shrink: 0; /* Evita que o card seja comprimido se houver espaço insuficiente */
+}
+
+#nosso-destino {
+  background-color: #aaddec;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBDLUDCh69fUBj5c9WQRfHgxzWHkoSARHgPg&s);
+  background-size: cover; /* Adjust the value as needed */
+  color: #000000;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+#Park-Seo-Joon {
+  background-color: #142740;
+  background-size: cover; /* Adjust the value as needed */
+  color: #ffffff;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+#Pretendente-Surpresa {
+  background-color: #BBDDF2;
+  background-size: cover; /* Adjust the value as needed */
+  color: #000000;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+#Love-Next-Door {
+  background-color: #F2B705;
+  background-size: cover; /* Adjust the value as needed */
+  color: #ffffff;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+#Noiva-por-Vingança {
+  background-color: #8C0343;
+  background-size: cover; /* Adjust the value as needed */
+  color: #ffffff;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+#A-Ultima-Missao {
+  background-color: #4E4359;
+  background-size: cover; /* Adjust the value as needed */
+  color: #ffffff;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+.marcado {
+  color: #000;
+  background-color: hsla(202, 66%, 85%, 0.692); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
+}
+
+.dorama {
+  background-color: #aaddec;
+  color: #141414;
+  padding: 20px;
+}
+:root {
+  --primary: #e50914;
+  --dark: #141414;
+  --light: #ffffff;
+    --amarelo-degrade: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
+.categoria-videos img {
+    opacity: 0.5;
+    height: 200px;
+}
+.categoria-videos img:hover {
+    opacity: 1.0;
+    border: 1px solid rgb(4, 40, 244);
+}
+
+.categoria h2 {
+    color: rgb(197, 53, 53);
+}
+
+</style>
+</head>
+<body>
+  <a href="#home" class="scroll-to-top">↑</a>
+  <header class="cabeçalho">
+    <div class="container">
+      <input type="checkbox" id="menu" class="container__botao">
+      <label for="menu">
+        <span class="cabeçalho__menu-hamburguer container__imagem"></span>
+      </label>
+      <ul class="lista-menu">
+        <li class="lista-menu__item">
+          <a href="terror.html" class="lista-menu__link">Terror</a>
+        </li>
+        <li class="lista-menu__item">
+          <a href="suspense.html" class="lista-menu__link">Suspense</a>
+        </li>
+        <li class="lista-menu__item">
+          <a href="comedia.html" class="lista-menu__link">Comédia</a>
+        </li>
+        <li class="lista-menu__item">
+          <a href="aventura.html" class="lista-menu__link">Aventura</a>
+        </li>
+        <li class="lista-menu__item">
+          <a href="doramas.html" class="lista-menu__link">Doramas</a>
+        </li>
+      </ul>
+      <a href="index.html"><img src="img/logo-alura.png" alt="Logo da Aluraflix" class="container__imagem"></a>
+    </div>
+    <div class="container">
+      <a href="#"><img src="img/Favoritos.svg" alt="Meus favoritos" class="container__imagem"></a>
+      <a href="#"><img src="img/Compras.svg" alt="Carrinhos de compras" class="container__imagem"></a>
+      <a href="#"><img src="img/Usuario.svg" alt="Meu perfil" class="container__imagem"></a>
+    </div> 
+</header>
+<section class="banner">
+    <h2 class="banner__titulo">Já sabe o que vai assistir?</h2>
+    <p class="banner__texto">Encontre em nosso repositório o que precisa para seu Entretenimento!</p>
+    <input type="search" class="banner__pesquisa" placeholder="Qual será sua próxima série ou Filme Favorito?">
+</section>
+<section class="expositor">
+  <main class="movie-grid">
+    <div class="movie-card featured">
+      <img class="movie-poster" alt="Nosso Destino" title="Nosso Destino" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcREutI76uvI4c7mvf06R-A0EOBd1MsSsJYHgbgLPN8P0RiHnclW" width="200" height="300">
+      <div class="movie-info">
+        <h3>Nosso Destino</h3>
+        <p>2023 • Romance</p>
+        <p>1° temporada</p>
+      </div>
+    </div>
+    
+    <div class="movie-card">
+      <img class="movie-poster" alt="O que Há de Errado com a Secretária Kim?" title="O que Há de Errado com a Secretária Kim?" src="https://img.odcdn.com.br/cdn-cgi/image/width=1200,height=1200,fit=cover/wp-content/uploads/2023/08/1-O-que-ha-de-errado-com-a-secretaria-Kim.png" width="200" height="300">
+      <div class="movie-info">
+        <h3>Park Seo Joon</h3>
+        <p>2018 • Romance</p>
+        <p>1° temporada</p>
+      </div>
+    </div>
+    
+    <div class="movie-card">
+      <img class="movie-poster" alt="Sweet Stranger and Me" title="Sweet Stranger and Me" src="https://m.media-amazon.com/images/S/pv-target-images/a2e66a7dc04a336c8437266cf74a40778ae29d8fc8334f53f18e290b7a254ef8.jpg" width="200" height="300">
+      <div class="movie-info">
+        <h3>Sweet Stranger and Me</h3>
+        <p>2016 • Drama</p>
+        <p>1 temporada</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img class="movie-poster" alt="Pretendente Surpresa" title="Pretendente Surpresa" src="https://br.web.img3.acsta.net/pictures/22/02/14/17/12/4268762.jpg" width="200" height="300">
+      <div class="movie-info">
+        <h3>Pretendente Surpresa</h3>
+        <p>2022 • Romance</p>
+        <p>1 temporada</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img class="movie-poster" alt="Love Next Door" title="Love Next Door" src="https://upload.wikimedia.org/wikipedia/en/a/a6/Love_Next_Door_poster.png" width="200" height="300">
+      <div class="movie-info">
+        <h3>Love Next Door</h3>
+        <p>2024 • Comédia romântica</p>
+        <p>1 temporada</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+    <img class="movie-poster" alt="Sua Vida Privada" title="Sua Vida Privada" src="https://play-lh.googleusercontent.com/proxy/tqt-TOFirU6KIxQC4eeVK5QkD92Bj3ABFfpSza06Ngu8m5igWjidA4qh96-NtHtu-6DAHfsy3cAnt7Y--o2CtfLNv1Cb8feMrbXqgQYfAxWEE4dMa4jfZmudMYWt1XDwkqM9ni5xgbD7qKNxGzwe084rJYM29ezuiYIJpg" width="200" height="300">
+      <div class="movie-info">
+        <h3>Sua Vida Privada</h3>
+        <p>2022 • Romance</p>
+        <p>1° temporada</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+    <img class="movie-poster" alt="Noiva por Vingança" title="Noiva por Vingança" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmVjMH-RD_DCaeIIt1jLj7JnO53qsARyBMXQ&s" width="200" height="300">
+      <div class="movie-info">
+        <h3>Noiva por Vingança</h3>
+        <p>2022 • Romance</p>
+        <p>1° temporada</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img class="movie-poster" alt="Love Next Door" title="Love Next Door" src="https://upload.wikimedia.org/wikipedia/en/a/a6/Love_Next_Door_poster.png" width="200" height="300">
+        <div class="movie-info">
+          <h3>Love Next Door</h3>
+          <p>2024 • Comédia romântica</p>
+          <p>1° temporada</p>
+        </div>
+      </div>
+  </main>  
+  <script>
+  document.querySelectorAll('.movie-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const movieTitle = card.querySelector('h3').textContent;
+    const returnToId = 'nosso-destino'; // Replace with the actual ID you want to return to
+    window.location.href = `file:///D:/02%20-%20TECNOLOGIA%20E%20ROBOTICA/4%C2%B0%20BIMESTRE/aluraflix-2-e/doramas.html/${movieTitle.toLowerCase().replace(/\s+/g, '-')}`;
+    window.history.pushState(null, null, `#${returnToId}`); // Add this line to push the specified ID to the history
+  });
+});
+  
+  const searchBar = document.querySelector('.search-bar');
+  searchBar.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    
+    document.querySelectorAll('.movie-card').forEach(card => {
+      const title = card.querySelector('h3').textContent.toLowerCase();
+      if (title.includes(searchTerm)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+  
+  // Add scroll effect to navigation
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.nav');
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(0,0,0,0.9)';
+    } else {
+      nav.style.background = 'linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%)';
+    }
+  });
+  </script>
+   <div class="progress-container">
+    <div class="progress-bar"></div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-dot active" data-section="nosso-Destino"></div>
+    <div class="scroll-dot" data-section="Park-Seo-Joon"></div>
+    <div class="scroll-dot" data-section="Pretendente-Surpresa"></div>
+    <div class="scroll-dot" data-section="Love-Next-Door"></div>
+    <div class="scroll-dot" data-section="#"></div>
+    <div class="scroll-dot" data-section="#"></div>
+  </div>
+
+  <section id="Nosso-Destino"  class="dorama">
+    <h1>Nosso Destino</h1>
+    <div class="movie-container">
+      <img class="movie-card-pag" alt="Nosso Destino" title="Nosso Destino" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcREutI76uvI4c7mvf06R-A0EOBd1MsSsJYHgbgLPN8P0RiHnclW" width="200" height="300">
+      <p>Nosso Destino é o novo dorama de fantasia e romance que estreou na Netflix nesta quarta-feira (23). A história acompanha o advogado Jang Shin-yu (interpretado pelo idol Rowoon), que lida com uma maldição em sua família. Por sorte, a servidora pública Lee Hong-jo, da atriz Jo Bo-ah (Meu Estranho Herói), parece ter a resposta para salvá-lo. Os episódios serão liberados na Netflix no mesmo dia da exibição original na Coreia do Sul, às quartas e quintas-feiras. A previsão é que sejam lançados 16 episódios até outubro.</p>
+    </div>
+  </section>
+
+  <section id="Park-Seo-Joon" class="dorama">
+    <div class="content fade-in">
+      <h1>Park Seo Joon: O que houve com a secretária Kim?</h1>
+      <div class="movie-container">
+      <img class="movie-card-pag" alt="Park Seo Joon" title="Park Seo Joon: O que Há de Errado com a Secretária Kim?" src="https://m.media-amazon.com/images/M/MV5BOTgxYzZlMmYtZDJiMy00MjMxLWFmNjQtZDg4YjJhYjQzNjBjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" width="200" height="300">
+      <p> Em "What's Wrong with Secretary Kim, Lee Young-joon" (Park Seo-joon) é o vice-presidente de uma enorme corporação. Porém, seu mundo é tirado do eixo quando sua competente secretária, Kim Mi-so (Park Min-young), anuncia sua imediata demissão de seu cargo depois de trabalhar com ele por nove anos. Lee Young-joon, então, decide que fará o que for necessário para convencer Kim Mi-so a não abandoná-lo.</p>
+    </div>
+    </div>
+  </section>
+
+  <section id="Pretendente-Surpresa" class="dorama">
+    <div class="content fade-in">
+      <h1>Pretendente Surpresa</h1>
+      <div class="movie-container">
+      <img class="movie-card-pag" alt="Park Seo Joon" title="Park Seo Joon: O que Há de Errado com a Secretária Kim?" src="https://upload.wikimedia.org/wikipedia/pt/thumb/f/f0/A_Business_Proposal_SBS.jpg/250px-A_Business_Proposal_SBS.jpg" width="200" height="300">
+      <p> Em Pretendente Surpresa, Shin Ha-ri (Kim Se-jeong) tem uma paixonite por um colega de trabalho já há bastante tempo. No entanto, quando ela descobre que ele tem uma namorada, Ha-ri acaba se sentindo deprimida. Para desabafar sobre seus sentimentos, Ha-ri decide encontrar sua amiga Jin Young-seo (Seol In-ah), uma jovem de origem rica. Ela pede para que Ha-ri se passe por ela em um encontro às cegas no qual ela não tem intenção de participar. Ha-ri aceita a proposta, mas para o seu espanto, o encontro é com Kang Tae-mu (Ahn Hyo-seop), ninguém menos do que o CEO da empresa onde ela trabalha. Tae-mu está participando do encontro por pressão do avô, fundador da empresa que herdou. O jovem solteiro é obcecado por trabalho e decide que irá casar com a primeira pessoa que conhecer, apenas para não ter seus objetivos profissionais comprometidos.</p>
+    </div>
+    </div>
+  </section>
+  <section id="Love-Next-Door" class="dorama">
+    <div class="content fade-in">
+      <h1>Love Next Door</h1>
+      <div class="movie-container">
+        <img class="movie-card-pag" alt="Park Seo Joon" title="Park Seo Joon: O que Há de Errado com a Secretária Kim?" src="https://upload.wikimedia.org/wikipedia/en/a/a6/Love_Next_Door_poster.png" width="200" height="300">
+        <p> Em Pretendente Surpresa, Shin Ha-ri (Kim Se-jeong) tem uma paixonite por um colega de trabalho já há bastante tempo. No entanto, quando ela descobre que ele tem uma namorada, Ha-ri acaba se sentindo deprimida. Para desabafar sobre seus sentimentos, Ha-ri decide encontrar sua amiga Jin Young-seo (Seol In-ah), uma jovem de origem rica. Ela pede para que Ha-ri se passe por ela em um encontro às cegas no qual ela não tem intenção de participar. Ha-ri aceita a proposta, mas para o seu espanto, o encontro é com Kang Tae-mu (Ahn Hyo-seop), ninguém menos do que o CEO da empresa onde ela trabalha. Tae-mu está participando do encontro por pressão do avô, fundador da empresa que herdou. O jovem solteiro é obcecado por trabalho e decide que irá casar com a primeira pessoa que conhecer, apenas para não ter seus objetivos profissionais comprometidos.</p>
+    </div>
+  </section>
+
+  <section id="Noiva-por-Vingança" class="dorama">
+    <div class="content fade-in">
+      <h1>Noiva por Vingança</h1>
+      <div class="movie-container">
+        <img class="movie-card-pag" alt="Noiva por Vingança" title="Noiva por Vingança" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmVjMH-RD_DCaeIIt1jLj7JnO53qsARyBMXQ&s" width="200" height="300">
+      <p>Noh Gojin, o CEO da GOTOP Education e gênio da matemática com um QI de 190, recebe uma ameaça de morte. Após ser atropelado, ele finge ter amnésia para pegar o culpado. Enquanto isso, sua secretária Sina, diagnosticada com uma doença terminal, finge ser sua noiva para se vingar dos seus maus-tratos. Mas quando seus segredos são revelados, tudo vira de pernas pro ar e um romance louco entre eles surge!</p>
+    </div>
+  </section>
+
+  <section id="A-Ultima-Missao" class="dorama">
+    <div class="content fade-in">
+      <h1>A Última Missão do Anjo: O Amor</h1>
+      <div class="movie-container">
+        <img class="movie-card-pag" alt="Noiva por Vingança" title="Noiva por Vingança" src="https://blogdaisuki.wordpress.com/wp-content/uploads/2020/07/a-ultima-missao-do-anjo-amor.jpg?w=1000" width="200" height="300">
+      <p>A Última Missão do Anjo: O Amor é uma história sobre um anjo otimista que é enviado para encontrar o amor verdadeiro de uma bailarina talentosa, mas acaba se apaixonando por ela</p>
+    </div>
+  </section>
+
+<script>
+// Progress bar
+window.addEventListener('scroll', () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  document.querySelector(".progress-bar").style.width = scrolled + "%";
+});
+
+// Active section tracking
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-links a');
+const scrollDots = document.querySelectorAll('.scroll-dot');
+const scrollTopButton = document.querySelector('.scroll-to-top');
+
+const observerOptions = {
+  threshold: 0.5
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Update navigation
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('../aluraflix-2-e/index.html').slice(1) === entry.target.id) {
+          link.classList.add('active');
+        }
+      });
+
+      // Update scroll dots
+      scrollDots.forEach(dot => {
+        dot.classList.remove('active');
+        if (dot.dataset.section === entry.target.id) {
+          dot.classList.add('active');
+        }
+      });
+
+      // Animate content
+      entry.target.querySelector('.fade-in').classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+sections.forEach(section => {
+  observer.observe(section);
+});
+
+// Scroll to top button visibility
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 300) {
+    scrollTopButton.classList.add('visible');
+  } else {
+    scrollTopButton.classList.remove('visible');
+  }
+});
+
+// Scroll dot click handlers
+scrollDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const section = document.getElementById(dot.dataset.section);
+    section.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Prevent default action and add smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const section = document.querySelector(anchor.getAttribute('href'));
+    section.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+<section class="tópicos">
+    <h2 class="tópicos__titulo">TÓPICOS VISITADOS RECENTEMENTE</h2>
+    <ul class="tópicos__lista">
+      <li class="tópicos__item"><a href="#" class="tópicos__link">Android</a></li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">Marketing Digital</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">Agile</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">Startups</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">HTML & CSS</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">Python</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">OO</a>
+      </li>
+      <li class="tópicos__item">
+        <a href="#" class="tópicos__link">Java</a>
+      </li>
+    </ul>
+  </section>
+</body>
+</html>

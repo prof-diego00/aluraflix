@@ -1,0 +1,193 @@
+@import url("styles/header.css");
+@import url("styles/banner.css");
+@import url("styles/carrossel.css");
+@import url("styles/topicos.css");
+@import url("styles/contato.css");
+@import url("styles/rodapé.css");
+
+body {
+    color:rgb(255, 255, 255);
+    background:rgb(11, 9, 9);
+    margin: 0px ;
+    font-family: "Chakra Petch", sans-serif;
+    margin-bottom: 100px;
+    font-family: var(--fonte-principal);
+    font-size: 16px;
+    font-weight: 400;
+    background-color: var(--cor-de-fundo)
+    }
+
+header{
+
+    border-bottom: solid 2px rgb(255, 254, 254);
+    padding: 20px;
+    font-size: 32px;
+    color: rgb(255, 255, 255);
+
+    background-image: url("");
+    background-size:auto; 
+    background-repeat:no-repeat;
+}
+a {
+    text-decoration: none;
+    font-size: 40px;
+    text-align: center;
+    margin: auto;
+    color:rgb(252, 252, 252)
+}
+
+.chamada {
+    background:var(--verde-marinho-degrade);
+    margin: auto;
+    padding-top: 2px;
+    display: flex;
+    justify-content: center;
+    object-position: center;
+}
+
+.chamada-terror {
+    background: rgba(0, 0, 0, 0.815);
+    margin: auto;
+    padding-top: 2px;
+    display: flex;
+    justify-content: center;
+}
+
+.chamada-texto {
+    margin-right: 20px;
+    text-align: justify;
+}
+
+.chamada-lancamento{
+    text-align:right;
+}
+
+.chamada-texto-terror {
+    margin-right: 5%;
+    background-image: url('img/it_a_coisa.jpg')
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+    margin: auto;
+    color:rgb(255, 255, 255)
+}
+h2 {
+    font-size: 30px;
+    text-align: center;
+    margin: auto;
+    color:rgb(255, 255, 255)
+}
+
+p {
+    text-align: justify;
+    font-size: 20px;
+    text-align: center;
+}
+.marcado {
+    color: #fffefe;
+    background-color: rgba(5, 89, 2, 0.548); /* Laranja claro */
+    padding: 3px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: justify;
+  }
+
+h3 {
+    font-size: 25px;
+    text-align:center;
+    margin: auto;
+    color:rgb(254, 255, 253)
+}
+
+hr {
+    color: #e00000;
+}
+.categoria-videos {
+    display: flex;
+    overflow-x: auto;
+    gap: 5px;
+}
+
+.categoria {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 51px;
+}
+
+.categoria-videos {
+    display: flex;
+    overflow-x:scroll; /* Hide the horizontal scrollbar */
+    gap: 0px;
+    justify-content: flex-start;
+}
+.scroll-container {
+    overflow-y: auto;
+    height: 200px;
+    /* Estiliza a barra de rolagem */
+    scrollbar-width: thin;
+    scrollbar-color: #642B69 #0E0412;
+}
+
+/* Ocultar a barra de rolagem vertical e personalizar a horizontal */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ec8804;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #5f3600;
+}
+
+.categoria-videos img {
+    opacity: 0.5;
+    height: 200px;
+}
+
+.categoria-videos img:hover {
+    opacity: 1.0;
+    border: 1px solid rgb(238, 163, 2);
+}
+
+.video-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.scroll-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.scroll-buttons button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.scroll-buttons button:hover {
+    background-color: #e0e0e0;
+}
+
+:root {
+    --cor-de-fundo: #000000;
+    --branco: rgb(253, 252, 252);
+    --preto: rgb(0, 0, 0);
+    --laranja: #b36212;
+    --azul-degrade: linear-gradient(97.54deg, #062af3 35.49%, #00fdbe 165.37%);
+    --fonte-principal: "Poppins";
+    --azul: #1a05df;
+    --amarelo-degrade: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); 
+    --vermelho-degrade: linear-gradient(90deg, rgba(143,1,1,1) 0%, rgba(255,0,0,1) 100%);
+    --verde-marinho-degrade: linear-gradient(to right bottom, #022859, #002e52, #002e3c, #002b20, #022601);)    
+}
+
