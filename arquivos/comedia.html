@@ -1,0 +1,144 @@
+<html><head><base href="https://websim.creationengine.ai/movie-genres/comedy.html">
+<title>Comedy Movies - Laughter Central</title>
+<style>
+  body {
+    font-family: 'Comic Sans MS', cursive;
+    background-color: #ffff99;
+    color: #333;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  h1, h2 {
+    text-align: center;
+    color: #ff6600;
+    text-shadow: 2px 2px 4px #ffcc00;
+  }
+  h1 {
+    font-size: 3em;
+  }
+  h2 {
+    font-size: 2em;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border: 5px solid #ff6600;
+    border-radius: 20px;
+    box-shadow: 0 0 15px #ffcc00;
+  }
+  p {
+    text-align: justify;
+  }
+  .back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #ff6600;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  .joke-box {
+    background-color: #fff;
+    border: 2px dashed #ff6600;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px 0;
+    text-align: center;
+    font-style: italic;
+  }
+  .comedy-types {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0;
+  }
+  .comedy-type {
+    background-color: #ff9933;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
+    width: 150px;
+    transition: transform 0.3s ease;
+  }
+  .comedy-type:hover {
+    transform: scale(1.1);
+  }
+  #laugh-meter {
+    width: 100%;
+    height: 30px;
+    background-color: #ccc;
+    margin: 20px 0;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  #laugh-fill {
+    width: 0%;
+    height: 100%;
+    background-color: #ff6600;
+    transition: width 1s ease-in-out;
+  }
+</style>
+</head>
+<body>
+  <h1>Comedy Movies</h1>
+  <h2>Laughter Central</h2>
+  
+  <img src="https://websim.creationengine.ai/images/comedy-collage.jpg" alt="Collage of funny scenes from various comedy movies" width="600" height="400">
+  
+  <p>Welcome to the wonderful world of comedy movies, where laughter is the best medicine and smiles are guaranteed! Comedy films come in all shapes and sizes, offering a delightful escape from the seriousness of everyday life. Whether you're in the mood for witty wordplay, slapstick humor, or heartwarming romantic comedies, there's something here for everyone.</p>
+  
+  <div class="joke-box">
+    <p>"I used to be addicted to soap, but I'm clean now!"</p>
+  </div>
+  
+  <h2>Types of Comedy</h2>
+  <div class="comedy-types">
+    <div class="comedy-type">Slapstick</div>
+    <div class="comedy-type">Satire</div>
+    <div class="comedy-type">Romantic Comedy</div>
+    <div class="comedy-type">Parody</div>
+    <div class="comedy-type">Dark Comedy</div>
+    <div class="comedy-type">Screwball</div>
+  </div>
+  
+  <p>Comedy movies do more than just make us laugh. They can provide social commentary, explore relationships, and even tackle serious issues through the lens of humor. The best comedies leave us with not just a smile on our face, but also something to think about.</p>
+  
+  <h2>Laugh Meter</h2>
+  <p>How funny do you find this page? Click to increase the laugh meter!</p>
+  <div id="laugh-meter">
+    <div id="laugh-fill"></div>
+  </div>
+  
+  <div class="joke-box">
+    <p>"Why don't scientists trust atoms? Because they make up everything!"</p>
+  </div>
+  
+  <p>Remember, laughter is contagious, so share your favorite comedy movies with friends and family. After all, the world could always use a little more humor!</p>
+  
+  <a href="index.html" class="back-link">Back to Genre Explorer</a>
+
+  <script>
+    let laughLevel = 0;
+    const laughMeter = document.getElementById('laugh-meter');
+    const laughFill = document.getElementById('laugh-fill');
+    
+    laughMeter.addEventListener('click', () => {
+      laughLevel += 10;
+      if (laughLevel > 100) laughLevel = 100;
+      laughFill.style.width = laughLevel + '%';
+      if (laughLevel === 100) {
+        alert('Congratulations! You've reached maximum laughter!');
+      }
+    });
+  </script>
+</body>
+</html>
