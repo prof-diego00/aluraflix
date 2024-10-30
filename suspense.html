@@ -15,6 +15,11 @@
 @import url("styles/topicos.css");
 @import url("styles/contato.css");
 @import url("styles/rodapé.css");
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
 
 body {
   margin: 0;
@@ -32,12 +37,24 @@ body {
   justify-content: space-between;
   align-items: center;
   z-index: 100;
+
 }
+.suspense {
+  background-color: #aaddec;
+  color: #141414;
+  padding: 20px;
+}
+
 h3 {
   size: 10px;
   position:sticky;
   text-align: left;
   text-shadow: #141414;
+}
+
+.h1-preto {
+  color: #000;
+  text-align: center;
 }
 p {
   width: auto;
@@ -216,8 +233,9 @@ p {
   flex-shrink: 0; /* Evita que o card seja comprimido se houver espaço insuficiente */
 }
 
-#o-duble {
+#Fragmentado {
   background-color: #F2B705;
+  background-image: url(https://obarrete.com/wp-content/uploads/2021/04/split-capa-e1619482841776.jpg);
   background-size: cover; /* Adjust the value as needed */
   color: #fdfdfd;
   text-shadow: #000000;
@@ -225,24 +243,48 @@ p {
   text-align: justify;
   background-repeat: no-repeat; /* Impede a repetição da imagem */
 }
-#Park-Seo-Joon {
+.marcado-Fragmentado {
+  color: #ffffff;
+  background-color: hsla(0, 0%, 0%, 0.534); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
+}
+#O-Abutre {
   background-color: #142740;
+  background-image: url(https://www.planoaberto.com.br/wp-content/uploads/2017/03/abutre-post.jpg);
   background-size: cover; /* Adjust the value as needed */
   color: #ffffff;
   padding: 20px;
   text-align: justify;
   background-repeat: no-repeat; /* Impede a repetição da imagem */
 }
-#Pretendente-Surpresa {
+.marcado-O-Abutre {
+  color: #ffffff;
+  background-color: hsla(0, 0%, 0%, 0.534); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
+}
+#Entre-Facas-e-Segredos {
   background-color: #BBDDF2;
+  background-image: url(https://img.odcdn.com.br/wp-content/uploads/2021/04/Cartaz-oficial-de-Entre-Facas-e-Segredos.jpg);
   background-size: cover; /* Adjust the value as needed */
   color: #000000;
   padding: 20px;
   text-align: justify;
   background-repeat: no-repeat; /* Impede a repetição da imagem */
 }
-#Love-Next-Door {
+.marcado-Entre-Facas-e-Segredos {
+  color: #ffffff;
+  background-color: #d916048e; /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
+}
+#O-Desconhecido {
   background-color: #F2B705;
+  background-image: url(https://i.ytimg.com/vi/QGS_l4mzTu0/maxresdefault.jpg);
   background-size: cover; /* Adjust the value as needed */
   color: #ffffff;
   padding: 20px;
@@ -256,11 +298,21 @@ p {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
 }
-
-.comedia {
-  background-color: #aaddec;
-  color: #141414;
+#Garota-Exemplar {
+  background-color: #F2B705;
+  background-image: url(https://cdn.folhape.com.br/upload/dn_arquivo/2020/06/1-hcjh8mn2v9sk0uv6yd2mfq.jpeg);
+  background-size: cover; /* Adjust the value as needed */
+  color: #ffffff;
   padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+.marcado-Garota-Exemplar {
+  color: #ffffff;
+  background-color: rgba(115, 80, 50, 0.521); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
 }
 .categoria-videos {
     display: flex;
@@ -329,10 +381,33 @@ p {
   --light: #ffffff;
     --amarelo-degrade: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 }
-</style>
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+  }
+
+  .scroll-to-top.visible {
+    opacity: 1;
+  }
+  </style>
+  </script>
+ </head>
 </head>
 <body>
-  <a href="#home" class="scroll-to-top">↑</a>
+  <a href="#home" onclick="scrollToTop()" class="scroll-to-top">↑</a>
   <header class="cabeçalho">
     <div class="container">
       <input type="checkbox" id="menu" class="container__botao">
@@ -383,77 +458,69 @@ p {
 </div>
 </section>
 <section class="expositor">
-  <h1>Comédia</h1>
+  <h1>Suspense</h1>
   <main class="movie-grid">
     <div class="movie-card featured">
-        <img class="movie-poster" alt="O Dublê " title="O Dublê " src="https://br.web.img3.acsta.net/c_310_420/img/20/fd/20fd28beb20ff9ccf9f405fcf1820c49.jpg" width="200" height="300">
+        <img class="movie-poster" alt="Fragmentado" title="Fragmentado" src="https://br.web.img2.acsta.net/pictures/17/02/24/16/32/482058.jpg" width="200" height="300">
         <div class="movie-info">
-          <h3>O Dublê </h3>
-          <p>2024 • Ação/Comédia</p>
-          <p>2h 6m</p>
+          <p>2016 • Terror/Mistério </p>
+          <p>1h 57m</p>
         </div>
       </div>
     
     <div class="movie-card">
-      <img class="movie-poster" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <img class="movie-poster" alt="O Abutre" title="O Abutre" src="https://m.media-amazon.com/images/S/pv-target-images/1002b63cd79ddebeedefdd223eba5e6a9ddc3074f713e792c3e01d7357ab5134.jpg" width="200" height="300">
       <div class="movie-info">
-        <h3>NOME DA SERIE/FILME</h3>
-        <p>2018 • Romance</p>
-        <p>1° temporada</p>
+        <p>2014 • Thriller/Suspense</p>
+        <p>1h 57m</p>
       </div>
     </div>
     
     <div class="movie-card">
-      <img class="movie-poster" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <img class="movie-poster" alt="O Filho Protegido" title="O Filho Protegido" src="https://d2d7ho1ae66ldi.cloudfront.net/ArquivoTitulos/f4ca96e3-a29e-11ea-aa6c-d62279b277aa/800_O+Filho+Protegido_poster.jpg" width="200" height="300">
       <div class="movie-info">
-        <h3>NOME DA SERIE/FILME</h3>
-        <p>2018 • Romance</p>
-        <p>1° temporada</p>
+        <p>2019 • Thriller/Suspense</p>
+        <p>1h 32m</p>
       </div>
     </div>
 
     <div class="movie-card">
-      <img class="movie-poster" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <img class="movie-poster" alt="Entre Facas e Segredos" title="Entre Facas e Segredos" src="https://br.web.img3.acsta.net/pictures/19/12/10/00/10/1646487.jpg" width="200" height="300">
       <div class="movie-info">
-        <h3>NOME DA SERIE/FILME</h3>
-        <p>2018 • Romance</p>
-        <p>1° temporada</p>
+        <p>2019 • Mistério/Thriller </p>
+        <p>2h 10m</p>
       </div>
     </div>
 
     <div class="movie-card">
-      <img class="movie-poster" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <img class="movie-poster" alt="O Desconhecido" title="O Desconhecido" src="https://i0.wp.com/vertentesdocinema.com/wp-content/uploads/2022/12/pt4ukp5fzn3pffig14e6phev2rz.jpg?fit=667%2C1000&ssl=1" width="200" height="300">
       <div class="movie-info">
-        <h3>NOME DA SERIE/FILME</h3>
-        <p>2018 • Romance</p>
-        <p>1° temporada</p>
+        <p>2022 • Thriller/Crime</p>
+        <p>1h 57m</p>
       </div>
     </div>
 
     <div class="movie-card">
-      <img class="movie-poster" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <img class="movie-poster" alt="O Procurado" title="O Procurado" src="https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/87/20/95/19873128.jpg" width="200" height="300">
       <div class="movie-info">
-        <h3>NOME DA SERIE/FILME</h3>
-        <p>2018 • Romance</p>
-        <p>1° temporada</p>
+        <p>2008 • Ação/Suspense</p>
+        <p>1h 50m</p>
       </div>
     </div>
 
     <div class="movie-card">
-      <img class="movie-poster" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <img class="movie-poster" alt="O Sexto Sentido" title="O Sexto Sentido" src="https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/90/53/94/20101506.jpg" width="200" height="300">
       <div class="movie-info">
-        <h3>NOME DA SERIE/FILME</h3>
-        <p>2018 • Romance</p>
-        <p>1° temporada</p>
+        <p>1999 • Terror/Mistério</p>
+        <p>1h 47m</p>
       </div>
     </div>
 
     <div class="movie-card">
-      <img class="movie-poster" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
+      <img class="movie-poster" alt="O Homem Duplicado" title="O Homem Duplicado" src="https://br.web.img2.acsta.net/pictures/14/04/11/13/31/098358.jpg" width="200" height="300">
       <div class="movie-info">
-        <h3>NOME DA SERIE/FILME</h3>
-        <p>2018 • Romance</p>
-        <p>1° temporada</p>
+        <p>2013 • Thriller/Mistério</p>
+        <p>1h 35m</p>
       </div>
     </div>
   </main>  
@@ -495,61 +562,59 @@ p {
     <div class="progress-bar"></div>
   </div>
   <div class="scroll-indicator">
-    <div class="scroll-dot active" data-section="o-duble"></div>
-    <div class="scroll-dot" data-section="Park-Seo-Joon"></div>
-    <div class="scroll-dot" data-section="Pretendente-Surpresa"></div>
-    <div class="scroll-dot" data-section="Love-Next-Door"></div>
-    <div class="scroll-dot" data-section="#"></div>
-    <div class="scroll-dot" data-section="#"></div>
+    <div class="scroll-dot active" data-section="Fragmentado"></div>
+    <div class="scroll-dot" data-section="O-Abutre"></div>
+    <div class="scroll-dot" data-section="Entre-Facas-e-Segredos"></div>
+    <div class="scroll-dot" data-section="O-Desconhecido"></div>
+    <div class="scroll-dot" data-section="Garota-Exemplar"></div>
   </div>
 
-  <section id="o-duble" class="comedia">
+  <section id="Fragmentado" class="suspense">
     <div class="content fade-in">
-      <h1>O Dublê</h1>
+      <h1 class="h1-preto">Fragmentado</h1>
       <div class="movie-container">
-      <img class="movie-card-pag" alt="O Dublê Trailer" title="O Dublê Trailer" src="https://br.web.img3.acsta.net/c_310_420/img/20/fd/20fd28beb20ff9ccf9f405fcf1820c49.jpg" width="200" height="300">
-      <p>Não recomendado para menos de 14 anos
-        O Dublê é um filme de ação e comédia dirigido por David Leitch (Trem-Bala, Deadpool 2) e baseado na série Duro na Queda, sucesso dos anos 80. A história acompanha Colt Seavers (Ryan Gosling), um dublê de Hollywood que precisou abandonar a vida de acrobacias perigosas após sofrer um acidente que quase acabou com a vida e a carreira dele. Porém, um tempo depois, ele é chamado de volta para trabalhar em um filme dirigido por sua ex-namorada, Jody Moreno (Emily Blunt), realizando as cenas mais intensas de ação de Tom Ryder (Aaron Taylor-Johnson), protagonista do longa. Durante as filmagens, este herói da classe trabalhadora abraçou a missão e a responsabilidade de desvendar um grande mistério: o desaparecimento misterioso de Tom. E, enquanto grava suas sequências e tenta entender o sumiço do astro de Hollywood, Colt descobre que pode ter se envolvido em algo muito maior do que um simples trabalho como dublê, tudo isso enquanto tenta reconquistar o amor da sua vida.</p>
+      <img class="movie-card-pag" alt="Fragmentado" title="Fragmentado" src="https://br.web.img2.acsta.net/pictures/17/02/24/16/32/482058.jpg" width="200" height="300">
+      <p class="marcado-Fragmentado">Kevin (James McAvoy) possui 23 personalidades distintas e consegue alterná-las quimicamente em seu organismo apenas com a força do pensamento. Um dia, ele sequestra três adolescentes que encontra em um estacionamento. Vivendo em cativeiro, elas passam a conhecer as diferentes facetas de Kevin e precisam encontrar algum meio de escapar.</p>
     </div>
     </div>
   </section>
 
-  <section id="NOME DA SERIE/FILME" class="comedia">
+  <section id="O-Abutre" class="suspense">
     <div class="content fade-in">
-      <h1>NOME DA SERIE/FILME</h1>
+      <h1>O Abutre</h1>
       <div class="movie-container">
-      <img class="movie-card-pag" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
-      <p>Texto sinopse sobre o Filme/Série</p>
+      <img class="movie-card-pag" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://m.media-amazon.com/images/S/pv-target-images/1002b63cd79ddebeedefdd223eba5e6a9ddc3074f713e792c3e01d7357ab5134.jpg" width="200" height="300">
+      <p class="marcado-O-Abutre">Enfrentando dificuldades para conseguir um emprego formal, o jovem Louis Bloom (Jake Gyllenhaal) decide entrar no agitado submundo do jornalismo criminal independente de Los Angeles. A fórmula é correr atrás de crimes e acidentes chocantes, registrar tudo e vender a história para veículos interessados.</p>
     </div>
     </div>
   </section>
 
-  <section id="NOME DA SERIE/FILME" class="comedia">
+  <section id="Entre-Facas-e-Segredos" class="suspense">
     <div class="content fade-in">
-      <h1>NOME DA SERIE/FILME</h1>
+      <h1>Entre Facas e Segredos</h1>
       <div class="movie-container">
-      <img class="movie-card-pag" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
-      <p>Texto sinopse sobre o Filme/Série</p>
+      <img class="movie-card-pag" alt="Entre Facas e Segredos" title="Entre Facas e Segredos" src="https://br.web.img3.acsta.net/pictures/19/12/10/00/10/1646487.jpg" width="200" height="300">
+      <p class="marcado-Entre-Facas-e-Segredos">Na trama de Entre Facas e Segredos, após comemorar 85 anos de idade, o famoso escritor de histórias policiais Harlan Thrombey (Christopher Plummer) é encontrado morto dentro de sua propriedade. Logo, o curioso e afável detetive Benoit Blanc (Daniel Craig) é misteriosamente contratado para investigar o caso e descobre que, entre os funcionários misteriosos e a família conflituosa de Harlan, todos podem ser considerados suspeitos do crime. Blanc vasculha uma teia de pistas falsas, chantagens e mentiras egoístas da família disfuncional de Harlan até a equipe dedicada da vítima, para descobrir a verdade por trás da morte suspeita do famoso escritor.</p>
     </div>
     </div>
   </section>
 
-  <section id="NOME DA SERIE/FILME" class="comedia">
+  <section id="O-Desconhecido" class="suspense">
     <div class="content fade-in">
-      <h1>NOME DA SERIE/FILME</h1>
+      <h1>O Desconhecido</h1>
       <div class="movie-container">
-      <img class="movie-card-pag" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
-      <p>Texto sinopse sobre o Filme/Série</p>
+      <img class="movie-card-pag" alt="O Desconhecido" title="O Desconhecido" src="https://i0.wp.com/vertentesdocinema.com/wp-content/uploads/2022/12/pt4ukp5fzn3pffig14e6phev2rz.jpg?fit=667%2C1000&ssl=1" width="200" height="300">
+      <p>Em The Stranger, dois homens se encontram em um avião e iniciam uma conversa, que se transforma em uma amizade. Para Henry Teague (Sean Harris), desgastado por uma vida inteira de trabalho físico e crimes, este é um sonho realizado: seu novo amigo Mark (Joel Edgerton) pode ser seu salvador e aliado. No entanto, nem tudo é o que parece ser, e cada um carrega segredos que ameaçam arruiná-los – e ao fundo, uma das maiores operações policiais do país se aproxima.</p>
     </div>
     </div>
   </section>
 
-  <section id="NOME DA SERIE/FILME" class="comedia">
+  <section id="Garota-Exemplar" class="suspense">
     <div class="content fade-in">
-      <h1>NOME DA SERIE/FILME</h1>
+      <h1>Garota Exemplar</h1>
       <div class="movie-container">
-      <img class="movie-card-pag" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
-      <p>Texto sinopse sobre o Filme/Série</p>
+      <img class="movie-card-pag" alt="Garota Exemplar" title="Garota Exemplar" src="https://m.media-amazon.com/images/I/81+RNiMeExL._AC_UF1000,1000_QL80_.jpg" width="200" height="300">
+      <p class="marcado-Garota-Exemplar">Amy Dunne (Rosamund Pike) desaparece no dia do seu aniversário de casamento, deixando o marido Nick (Ben Affleck) em apuros. Ele começa a agir descontroladamente, abusando das mentiras, e se torna o suspeito número um da polícia. Com o apoio da sua irmã gêmea, Margo (Carrie Coon), Nick tenta provar a sua inocência e, ao mesmo tempo, procura descobrir o que aconteceu com Amy.</p>
     </div>
     </div>
   </section>
@@ -633,25 +698,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     <ul class="tópicos__lista">
       <li class="tópicos__item"><a href="#" class="tópicos__link">Android</a></li>
       <li class="tópicos__item">
-        <a href="#" class="tópicos__link">Marketing Digital</a>
+        <a href="#" class="tópicos__link">Fragmentado</a>
       </li>
       <li class="tópicos__item">
-        <a href="#" class="tópicos__link">Agile</a>
+        <a href="#" class="tópicos__link">Garota Exemplar</a>
       </li>
       <li class="tópicos__item">
-        <a href="#" class="tópicos__link">Startups</a>
+        <a href="#" class="tópicos__link">O Procurado</a>
       </li>
       <li class="tópicos__item">
-        <a href="#" class="tópicos__link">HTML & CSS</a>
+        <a href="#" class="tópicos__link">Entre Facas e Segredos</a>
       </li>
       <li class="tópicos__item">
-        <a href="#" class="tópicos__link">Python</a>
+        <a href="#" class="tópicos__link">O Sexto Sentido</a>
       </li>
       <li class="tópicos__item">
-        <a href="#" class="tópicos__link">OO</a>
+        <a href="#" class="tópicos__link">O Filho Protegido</a>
       </li>
       <li class="tópicos__item">
-        <a href="#" class="tópicos__link">Java</a>
+        <a href="#" class="tópicos__link">O Abutre</a>
       </li>
     </ul>
   </section>

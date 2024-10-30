@@ -295,10 +295,16 @@ p {
   --light: #ffffff;
     --amarelo-degrade: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 }
+<script>
+  function scrollToTop() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+</script>
 </style>
 </head>
 <body>
-  <a href="#home" class="scroll-to-top">↑</a>
+  <a href="aventura.html" onclick="scrollToTop()" class="scroll-to-top">↑</a>
+  <script src="script.js"></script>  
   <header class="cabeçalho">
     <div class="container">
       <input type="checkbox" id="menu" class="container__botao">
@@ -384,11 +390,10 @@ p {
     </div>
 
     <div class="movie-card">
-      <img class="movie-poster" alt="Cruella" title="Cruella" src="https://upload.wikimedia.org/wikipedia/pt/f/f6/Cruella_2021_film_poster.jpg" width="200" height="300">
+      <img class="movie-poster" alt="O Hobbit: Uma Jornada Inesperada" title="O Hobbit: Uma Jornada Inesperada" src="https://musicart.xboxlive.com/7/86b61100-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080" width="200" height="300">
       <div class="movie-info">
-        <h3>Cruella</h3>
-        <p>2021 • Comédia/Crime</p>
-        <p>2h 14m</p>
+        <p>2012 • Fantasia/Aventura</p>
+        <p>2h 49m</p>
       </div>
     </div>
 
@@ -402,11 +407,10 @@ p {
     </div>
 
     <div class="movie-card">
-      <img class="movie-poster" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF8DYYJucxENvcsA3q5o9SxGXjNEFlFuaOfw&s" width="200" height="300">
+      <img class="movie-poster" alt="127 Horas title="127 Horas" src="https://br.web.img3.acsta.net/medias/nmedia/18/87/33/30/20028710.jpg" width="200" height="300">
       <div class="movie-info">
-        <h3>Cidade Perdida</h3>
-        <p>2022 • Aventura/Comédia</p>
-        <p>1h 52m</p>
+        <p>2010 • Aventura/Thriller</p>
+        <p>1h 34m</p>
       </div>
     </div>
   </main>  
@@ -433,7 +437,6 @@ p {
       }
     });
   });
-  
   // Add scroll effect to navigation
   window.addEventListener('scroll', () => {
     const nav = document.querySelector('.nav');

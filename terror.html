@@ -14,6 +14,11 @@
 @import url("styles/topicos.css");
 @import url("styles/contato.css");
 @import url("styles/rodapé.css");
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
 
 body {
     color:rgb(255, 255, 255);
@@ -64,13 +69,6 @@ header{
 
 .chamada-texto-terror {
     margin-right: 5%;
-}
-
-h1 {
-    font-size: 40px;
-    text-align: center;
-    margin: auto;
-    color:rgb(62, 97, 6)
 }
 
 p {
@@ -281,32 +279,311 @@ hr {
     border: 1px solid rgb(238, 163, 2);
 }
 
-.video-container {
-    display: flex;
-    justify-content: flex-end;
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
 }
 
-.scroll-buttons {
-    position: absolute;
+.movie-grid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 3rem;
+  position:sticky;
+}
+
+.movie-card {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  text-align: left;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  text-align: left;
+}
+
+.movie-poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  text-align: left;
+}
+.movie-poster-pag {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+.movie-card-pag {
+  position: relative;
+  object-position: right;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+
+.movie-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%);
+  text-align: left;
+}
+
+.search-bar {
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: var(--light);
+  width: 300px;
+}
+
+.search-bar:focus {
+  outline: none;
+  background: rgba(255,255,255,0.2);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.featured {
+  animation: pulse 2s infinite;
+}
+.progress-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    z-index: 1001;
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: #007bff;
+    width: 0%;
+    transition: width 0.2s ease;
+  }
+
+  .scroll-indicator {
+    position: fixed;
+    right: 20px;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
-    align-items: center;
-}
+    flex-direction: column;
+    gap: 10px;
+  }
 
-.scroll-buttons button {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    padding: 10px;
+  .scroll-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
     cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .scroll-dot.active {
+    background: #007bff;
+    transform: scale(1.5);
+  }
+
+  .scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+  }
+
+  .scroll-to-top.visible {
+    opacity: 1;
+  }
+
+  /* Animation for section content */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .movie-container {
+  display: flex; /* Cria um container flexbox */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+  text-align: left;
 }
 
-.scroll-buttons button:hover {
-    background-color: #e0e0e0;
+.movie-card-pag {
+  position: relative;
+  text-align: left;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  flex-shrink: 0; /* Evita que o card seja comprimido se houver espaço insuficiente */
 }
+
+#O-Iluminado {
+  background-color: #aaddec;
+  background-image: url(https://nerdinterior.com.br/wp-content/uploads/2021/02/O-iluminado-scaled.jpg);
+  background-size: cover; /* Adjust the value as needed */
+  color: #000000;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+.marcado-Iluminado {
+  color: #ffffff;
+  background-color: rgba(1, 6, 8, 0.575); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
+}
+#O-Exorcista {
+  background-color: #142740;
+  background-image: url(https://i.ytimg.com/vi/96RCGOaNuCM/maxresdefault.jpg);
+  background-size: cover; /* Adjust the value as needed */
+  color: #ffffff;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+.marcado-Exorcista {
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.411); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
+}
+#Invocacao-do-Mal {
+  background-color: #BBDDF2;
+  background-image: url(https://seriesemcena.com.br/wp-content/uploads/2016/04/Invoca%C3%A7%C3%A3o-do-Mal-2-Poster-Main-2.jpg);
+  background-size: cover; /* Adjust the value as needed */
+  color: #000000;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+.marcado-Invocacao {
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.582); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
+}
+#Poltergeist {
+  background-color: #F2B705;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjW5hl8ZeDZwIMfqC49qJWh9kqNjuY-EcZ2w&s);
+  background-size: cover; /* Adjust the value as needed */
+  color: #ffffff;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+.marcado-Moana {
+  color: #ffffff;
+  background-color: rgba(3, 120, 166, 0.575); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
+}
+.marcado {
+  color: #ffffff;
+  background-color: rgba(80, 160, 191, 0.411); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
+}
+
+#A-Entidade {
+  background-color: #F2B705;
+  background-image: url(https://uploads.jovemnerd.com.br/wp-content/uploads/2020/06/dica-a-entidade.jpg?ims=1210x544/filters:quality);
+  background-size: cover; /* Adjust the value as needed */
+  color: #ffffff;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+.marcado-Aquaman {
+  color: #ffffff;
+  background-color: rgba(10, 19, 38, 0.534); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
+}
+.aventura {
+  background-color: #aaddec;
+  color: #141414;
+  padding: 20px;
+}
+:root {
+  --primary: #e50914;
+  --dark: #141414;
+  --light: #ffffff;
+    --amarelo-degrade: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+  }
+
+  .scroll-to-top.visible {
+    opacity: 1;
+  }
   </style>
+ <script>
+  function scrollToTop() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+</script>
 </head>
 <body>
+  <a href="#home" onclick="scrollToTop()" class="scroll-to-top">↑</a>
     <header class="cabeçalho">
     <div class="container">
       <input type="checkbox" id="menu" class="container__botao">
@@ -357,7 +634,124 @@ hr {
 </div>
 <hr>
 </section>
-<hr>
+<section class="expositor"></section>
+  <h1>Filmes de Terror</h1>
+  <main class="movie-grid">
+    <div class="movie-card featured">
+        <img class="movie-poster" alt="O Iluminado" title="O Iluminado" src="https://static.wikia.nocookie.net/dublagem/images/3/33/O_Iluminado.jpeg/revision/latest/thumbnail/width/360/height/360?cb=20220319234118&path-prefix=pt-br" width="200" height="300">
+        <div class="movie-info">
+          <p>1980 • Terror/Mistério</p>
+          <p>2h 26m</p>
+        </div>
+      </div>
+    
+    <div class="movie-card">
+      <img class="movie-poster" alt="O Exorcista" title="O Exorcista" src="https://br.web.img2.acsta.net/medias/nmedia/18/87/26/84/19873738.jpg" width="200" height="300">
+      <div class="movie-info">
+        <p>1973 • Terror/Mistério</p>
+        <p>2h 1m</p>
+      </div>
+    </div>
+    
+    <div class="movie-card">
+      <img class="movie-poster" alt="Invocação do Mal 2" title="Invocação do Mal 2" src="https://musicart.xboxlive.com/7/43f33200-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080" width="200" height="300">
+      <div class="movie-info">
+        <p>2016 • Terror/Mistério</p>
+        <p>2h 14m</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img class="movie-poster" alt="Moana - Um Mar de Aventuras" title="Moana - Um Mar de Aventuras" src="https://musicimage.xboxlive.com/catalog/video.movie.8D6KGX08SFRQ/image?locale=pt-br&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg" width="200" height="300">
+      <div class="movie-info">
+        <p>1982  • Terror/Fantasia</p>
+        <p>1h 54m</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img class="movie-poster" alt="A Entidade" title="A Entidade" src="https://br.web.img2.acsta.net/medias/nmedia/18/91/31/38/20277419.jpg" width="200" height="300">
+      <div class="movie-info">
+        <p>2012 • Terror/Mistério</p>
+        <p>1h 50m</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img class="movie-poster" alt="A Hora do Pesadelo" title="A Hora do Pesadelo" src="https://musicart.xboxlive.com/7/e2dc3e00-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080" width="200" height="300">
+      <div class="movie-info">
+        <p>1984 • Terror/Crime</p>
+        <p>1h 31m/p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img class="movie-poster" alt="Annabelle" title="Annabelle" src="https://br.web.img2.acsta.net/pictures/14/08/11/21/32/336680.jpg" width="200" height="300">
+      <div class="movie-info">
+        <p>2014 • Terror/Mistério</p>
+        <p>1h 39m</p>
+      </div>
+    </div>
+
+    <div class="movie-card">
+      <img class="movie-poster" alt="O Massacre da Serra Elétrica" title="O Massacre da Serra Elétrica" src="https://ingresso-a.akamaihd.net/prd/img/movie/o-massacre-da-serra-eletrica-relancamento/adbe1707-c01a-44df-b648-bf1e2dd27cee.jpg" width="200" height="300">
+      <div class="movie-info">
+        <p>1974 • Terror/Crime</p>
+        <p>1h 23m</p>
+      </div>
+    </div>
+  </main>  
+<section class="secao-terror" href="terror.html">
+  <h1>O que são os Filmes de Terror?  </h1>
+            <p>Filmes de terror são projetados para evocar medo, terror e choque. Eles geralmente exploram temas sombrios e apresentam elementos sobrenaturais ou emoções psicológicas. De filmes clássicos de monstros a horrores psicológicos modernos, esse gênero mantém o público na ponta dos assentos, corações acelerados e olhos semicerrados.</p>
+<p>Os principais elementos dos filmes de terror incluem:</p>
+  <ul>
+    <li>Música de suspense e efeitos sonoros</li>
+    <li>Cenários sombrios e assustadores</li>
+    <li>Sustos repentinos e técnicas de construção de tensão</li>
+    <li>Monstros, fantasmas ou vilões psicopatas</li>
+    <li>Exploração de medos e tabus primitivos</li>
+    </ul>
+    <p>Seja você fã de filmes de terror, thrillers sobrenaturais ou terror psicológico, esse gênero oferece uma fuga emocionante para os reinos do assustador e desconhecido.</p>    
+</section>
+<div> 
+  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1932667652&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/horrormusiccollection" title="Horror Music Collection" target="_blank" style="color: #cccccc; text-decoration: none;">Horror Music Collection</a> · <a href="https://soundcloud.com/horrormusiccollection/dramatic-laughs" title="Dramatic Laughs" target="_blank" style="color: #cccccc; text-decoration: none;">Dramatic Laughs</a></div>
+</div>
+
+  <script>
+  document.querySelectorAll('.movie-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const movieTitle = card.querySelector('h3').textContent;
+    const returnToId = 'nosso-destino'; // Replace with the actual ID you want to return to
+    window.location.href = `file:///D:/02%20-%20TECNOLOGIA%20E%20ROBOTICA/4%C2%B0%20BIMESTRE/aluraflix-2-e/doramas.html/${movieTitle.toLowerCase().replace(/\s+/g, '-')}`;
+    window.history.pushState(null, null, `#${returnToId}`); // Add this line to push the specified ID to the history
+  });
+});
+  
+  const searchBar = document.querySelector('.search-bar');
+  searchBar.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    
+    document.querySelectorAll('.movie-card').forEach(card => {
+      const title = card.querySelector('h3').textContent.toLowerCase();
+      if (title.includes(searchTerm)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+  // Add scroll effect to navigation
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.nav');
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(0,0,0,0.9)';
+    } else {
+      nav.style.background = 'linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%)';
+    }
+  });
+  </script>
+  <hr>
   <section class="Categorias">
       <h2>Filmes e Séries</h2>
       <div class="categoria-videos">
@@ -373,22 +767,141 @@ hr {
         <img src="https://img.youtube.com/vi/JrEnvWxjYCo/maxresdefault.jpg"></a>
 </section>
 <hr>
-<section class="secao-terror" href="terror.html">
-  <h1>Filmes de Terror</h1>
-            <p>Filmes de terror são projetados para evocar medo, terror e choque. Eles geralmente exploram temas sombrios e apresentam elementos sobrenaturais ou emoções psicológicas. De filmes clássicos de monstros a horrores psicológicos modernos, esse gênero mantém o público na ponta dos assentos, corações acelerados e olhos semicerrados.</p>
-<p>Os principais elementos dos filmes de terror incluem:</p>
-  <ul>
-    <li>Música de suspense e efeitos sonoros</li>
-    <li>Cenários sombrios e assustadores</li>
-    <li>Sustos repentinos e técnicas de construção de tensão</li>
-    <li>Monstros, fantasmas ou vilões psicopatas</li>
-    <li>Exploração de medos e tabus primitivos</li>
-    </ul>
-    <p>Seja você fã de filmes de terror, thrillers sobrenaturais ou terror psicológico, esse gênero oferece uma fuga emocionante para os reinos do assustador e desconhecido.</p>    
-</section>
-<div> 
-  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1932667652&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/horrormusiccollection" title="Horror Music Collection" target="_blank" style="color: #cccccc; text-decoration: none;">Horror Music Collection</a> · <a href="https://soundcloud.com/horrormusiccollection/dramatic-laughs" title="Dramatic Laughs" target="_blank" style="color: #cccccc; text-decoration: none;">Dramatic Laughs</a></div>
-</div>
+   <div class="progress-container">
+    <div class="progress-bar"></div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-dot active" data-section="O-Iluminado"></div>
+    <div class="scroll-dot" data-section="O-Exorcista"></div>
+    <div class="scroll-dot" data-section="Invocação-do-Mal"></div>
+    <div class="scroll-dot" data-section="Poltergeist"></div>
+    <div class="scroll-dot" data-section="A-Entidade"></div>
+  </div>
+<hr>
+  <section id="O-Iluminado" class="aventura">
+    <div class="content fade-in">
+      <h1>O Iluminado</h1>
+      <div class="movie-container">
+      <img class="movie-card-pag" alt="O Iluminado" title="O Iluminado" src="https://static.wikia.nocookie.net/dublagem/images/3/33/O_Iluminado.jpeg/revision/latest/thumbnail/width/360/height/360?cb=20220319234118&path-prefix=pt-br" width="200" height="300">
+      <p class="marcado-Iluminado">Durante o inverno, um homem (Jack Nicholson) é contratado para ficar como vigia em um hotel no Colorado e vai para lá com a mulher (Shelley Duvall) e seu filho (Danny Lloyd). Porém, o contínuo isolamento começa a lhe causar problemas mentais sérios e ele vai se tornado cada vez mais agressivo e perigoso, ao mesmo tempo em que seu filho passa a ter visões de acontecimentos ocorridos no passado, que também foram causados pelo isolamento excessivo.</p>
+    </div>
+    </div>
+  </section>
+
+  <section id="O-Exorcista" class="aventura">
+    <div class="content fade-in">
+      <h1>O Exorcista</h1>
+      <div class="movie-container">
+      <img class="movie-card-pag" alt="O Exorcista" title="O Exorcista" src="https://contratempo.info/wp-content/uploads/2023/01/WhatsApp-Image-2023-01-18-at-22.16.50.jpeg" width="200" height="300">
+      <p class="marcado-Exorcista">Em Georgetown, Washington, uma atriz vai gradativamente tomando consciência que a sua filha de doze anos está tendo um comportamento completamente assustador. Deste modo, ela pede ajuda a um padre, que também um psiquiatra, e este chega a conclusão de que a garota está possuída pelo demônio. Ele solicita então a ajuda de um segundo sacerdote, especialista em exorcismo, para tentar livrar a menina desta terrível possessão.</p>
+    </div>
+    </div>
+  </section>
+
+  <section id="Invocacao-do-Mal" class="aventura">
+    <div class="content fade-in">
+      <h1>Invocação do Mal 2</h1>
+      <div class="movie-container">
+      <img class="movie-card-pag" alt="Amigos Imaginários" title="Amigos Imaginários" src="https://musicart.xboxlive.com/7/43f33200-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080" width="200" height="300">
+      <p class="marcado-Invocacao">Em Invocação do Mal 2, os investigadores paranormais Ed (Patrick Wilson) e Lorraine (Vera Farmiga) desembarcam em Londres, Inglaterra, para ajudar uma família atormentada. Peggy (Frances O'Connor), uma mãe solteira, acredita que tenha algo maligno em sua casa.</p>
+    </div>
+    </div>
+  </section>
+
+  <section id="Poltergeist" class="aventura">
+    <div class="content fade-in">
+      <h1>Poltergeist - O Fenômeno</h1>
+      <div class="movie-container">
+      <img class="movie-card-pag" alt="Poltergeist" title="Poltergeist" src="https://musicimage.xboxlive.com/catalog/video.movie.8D6KGX08SFRQ/image?locale=pt-br&mode=crop&purposes=BoxArt&q=90&h=225&w=150&format=jpg" width="200" height="300">
+      <p class="marcado-Moana">Uma família da Califórnia precisa lidar com acontecimentos estranhos e assustadores quando espíritos começam a se comunicar com eles através de um aparelho de TV. Os fantasmas parecem amigáveis no começo, mas ficam cada vez mais ameaçadores quando a filha mais nova do casal desaparece. Sem saída, os pais procuram a ajuda de um grupo de parapsicólogos liderados por uma médium para tentar recuperar a menina.</p>
+    </div>
+    </div>
+  </section>
+
+  <section id="A-Entidade" class="aventura">
+    <div class="content fade-in">
+      <h1>A Entidade</h1>
+      <div class="movie-container">
+      <img class="movie-card-pag" alt="A Entidade" title="A Entidade" src="https://br.web.img2.acsta.net/medias/nmedia/18/91/31/38/20277419.jpg" width="200" height="300">
+      <p class="marcado-Aquaman">Ellison (Ethan Hawke) é um escritor de romances policias que acaba de se mudar com a família. No sótão da nova casa ele descobre antigos rolos de filme, que trazem imagens de pessoas sendo mortas. Intrigado com o que elas representam e com um estranho símbolo presente nas imagens, ele e sua família logo passam a correr sério risco de morte. Com Vincent D'Onofrio.</p>
+    </div>
+    </div>
+  </section>
+
+<script>
+// Progress bar
+window.addEventListener('scroll', () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  document.querySelector(".progress-bar").style.width = scrolled + "%";
+});
+
+// Active section tracking
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-links a');
+const scrollDots = document.querySelectorAll('.scroll-dot');
+const scrollTopButton = document.querySelector('.scroll-to-top');
+
+const observerOptions = {
+  threshold: 0.5
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Update navigation
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('../aluraflix-2-e/index.html').slice(1) === entry.target.id) {
+          link.classList.add('active');
+        }
+      });
+
+      // Update scroll dots
+      scrollDots.forEach(dot => {
+        dot.classList.remove('active');
+        if (dot.dataset.section === entry.target.id) {
+          dot.classList.add('active');
+        }
+      });
+
+      // Animate content
+      entry.target.querySelector('.fade-in').classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+sections.forEach(section => {
+  observer.observe(section);
+});
+
+// Scroll to top button visibility
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 300) {
+    scrollTopButton.classList.add('visible');
+  } else {
+    scrollTopButton.classList.remove('visible');
+  }
+});
+
+// Scroll dot click handlers
+scrollDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const section = document.getElementById(dot.dataset.section);
+    section.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Prevent default action and add smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    const section = document.querySelector(anchor.getAttribute('href'));
+    section.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
 <section class="tópicos">
     <h2 class="tópicos__titulo">TÓPICOS VISITADOS RECENTEMENTE</h2>
     <ul class="tópicos__lista">
@@ -416,6 +929,5 @@ hr {
       </li>
     </ul>
   </section>
-  <a href="index.html" class="back-link">Escape de volta para o Início (se você ousar)</a>
 </body>
 </html>
