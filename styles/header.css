@@ -29,7 +29,7 @@
     display:none;
     position:absolute;
     top: 80%;
-    width: 20vw;
+    width: auto;
     z-index: 1; /* Garantindo que a lista fique acima dos outros elementos */
     opacity: 1.0;
     list-style: none;
