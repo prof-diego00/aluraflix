@@ -1,0 +1,167 @@
+<html><head><base href="https://movieflix.com/movies">
+<title>MovieFlix - Discover Amazing Films</title>
+<style>
+:root {
+  --primary: #e50914;
+  --dark: #141414;
+  --light: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--dark);
+  color: var(--light);
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo {
+  height: 2.5rem;
+  fill: var(--primary);
+}
+
+.movie-grid {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.movie-card {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.movie-poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+
+.movie-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%);
+}
+
+.search-bar {
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: var(--light);
+  width: 300px;
+}
+
+.search-bar:focus {
+  outline: none;
+  background: rgba(255,255,255,0.2);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.featured {
+  animation: pulse 2s infinite;
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <svg class="logo" viewBox="0 0 100 30">
+    <path d="M10 0 L30 0 L50 30 L70 0 L90 0 L60 30 L40 30 Z"/>
+  </svg>
+  
+  <input type="search" class="search-bar" placeholder="Search movies...">
+  
+  <div class="nav-links">
+    <a href="https://movieflix.com/browse" style="color: white; text-decoration: none; margin: 0 1rem;">Browse</a>
+    <a href="https://movieflix.com/mylist" style="color: white; text-decoration: none; margin: 0 1rem;">My List</a>
+  </div>
+</nav>
+
+<main class="movie-grid">
+  <div class="movie-card featured">
+    <img class="movie-poster" alt="Inception movie poster showing a city folding in on itself" src="inception.jpg" width="200" height="300">
+    <div class="movie-info">
+      <h3>Inception</h3>
+      <p>2010 • Action/Sci-fi</p>
+    </div>
+  </div>
+  
+  <div class="movie-card">
+    <img class="movie-poster" alt="The Shawshank Redemption poster showing Andy Dufresne looking up at the rain" src="shawshank.jpg" width="200" height="300">
+    <div class="movie-info">
+      <h3>The Shawshank Redemption</h3>
+      <p>1994 • Drama</p>
+    </div>
+  </div>
+  
+  <div class="movie-card">
+    <img class="movie-poster" alt="Pulp Fiction poster with Uma Thurman lounging" src="pulp-fiction.jpg" width="200" height="300">
+    <div class="movie-info">
+      <h3>Pulp Fiction</h3>
+      <p>1994 • Crime/Drama</p>
+    </div>
+  </div>
+</main>
+
+<script>
+document.querySelectorAll('.movie-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const movieTitle = card.querySelector('h3').textContent;
+    window.location.href = `https://movieflix.com/watch/${movieTitle.toLowerCase().replace(/\s+/g, '-')}`;
+  });
+});
+
+const searchBar = document.querySelector('.search-bar');
+searchBar.addEventListener('input', (e) => {
+  const searchTerm = e.target.value.toLowerCase();
+  
+  document.querySelectorAll('.movie-card').forEach(card => {
+    const title = card.querySelector('h3').textContent.toLowerCase();
+    if (title.includes(searchTerm)) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+});
+
+// Add scroll effect to navigation
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav');
+  if (window.scrollY > 50) {
+    nav.style.background = 'rgba(0,0,0,0.9)';
+  } else {
+    nav.style.background = 'linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%)';
+  }
+});
+</script>
+
+</body></html>

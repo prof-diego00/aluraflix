@@ -575,6 +575,24 @@ hr {
   .scroll-to-top.visible {
     opacity: 1;
   }
+  footer {
+    background-color: #000000;
+    text-align: center;
+    size: 50px;
+}
+
+.container-footer {
+    text-align: center;
+    padding: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.logo img {
+    width: 300px;
+}
   </style>
  <script>
   function scrollToTop() {
@@ -929,5 +947,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       </li>
     </ul>
   </section>
+  <footer>
+    <div class="container-footer">
+        <div class="logo">
+            <img src="logo-newton.png" alt="Escola Newton Prado" title="E. E. Newton Prado">
+        </div>
+        <div class="copyright">
+            &copy; 2024 Aluraflix ©. Todos os direitos reservados.
+        </div>
+    </div>
+  </footer>
 </body>
 </html>

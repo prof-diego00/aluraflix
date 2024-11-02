@@ -1,0 +1,259 @@
+<html><head><base href="https://movieflix.com/series">
+<title>MovieFlix - TV Series</title>
+<style>
+  :root {
+    --primary: #e50914;
+    --dark: #141414;
+    --light: #e5e5e5;
+    --gradient: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(20,20,20,0.8) 100%);
+  }
+
+  body {
+    margin: 0;
+    padding: 20px;
+    background: var(--dark);
+    color: var(--light);
+    font-family: 'Arial', sans-serif;
+  }
+
+  .series-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 20px;
+  }
+
+  .filter-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .filter-btn {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: var(--light);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--primary);
+  }
+
+  .series-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 20px;
+  }
+
+  .series-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    height: 350px;
+  }
+
+  .series-card:hover {
+    transform: scale(1.05);
+  }
+
+  .series-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .series-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: var(--gradient);
+  }
+
+  .series-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .series-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .match {
+    color: #46d369;
+  }
+
+  .badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--primary);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+  }
+
+  .logo {
+    font-size: 2rem;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-left: 20px;
+  }
+
+  nav {
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+  }
+
+  nav a {
+    color: var(--light);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover, nav a.active {
+    color: var(--primary);
+  }
+</style>
+</head>
+<body>
+  <div class="logo">MovieFlix</div>
+  <nav>
+    <a href="https://movieflix.com/browse">Home</a>
+    <a href="https://movieflix.com/movies">Movies</a>
+    <a href="https://movieflix.com/series" class="active">TV Series</a>
+    <a href="https://movieflix.com/mylist">My List</a>
+  </nav>
+
+  <div class="series-header">
+    <h1>TV Series</h1>
+    <div class="filter-buttons">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Drama</button>
+      <button class="filter-btn">Comedy</button>
+      <button class="filter-btn">Thriller</button>
+    </div>
+  </div>
+
+  <div class="series-grid">
+    <!-- Breaking Point -->
+    <div class="series-card">
+      <img class="series-image" alt="Dark dramatic scene of a teacher turned criminal mastermind" src="https://source.unsplash.com/random/500x700?drama" width="500" height="700">
+      <div class="badge">New Season</div>
+      <div class="series-info">
+        <div class="series-title">Breaking Point</div>
+        <div class="series-meta">
+          <span class="match">98% Match</span>
+          <span>5 Seasons</span>
+          <span>HD</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech Valley -->
+    <div class="series-card">
+      <img class="series-image" alt="Silicon Valley office space with young tech entrepreneurs" src="https://source.unsplash.com/random/500x700?tech" width="500" height="700">
+      <div class="series-info">
+        <div class="series-title">Tech Valley</div>
+        <div class="series-meta">
+          <span class="match">95% Match</span>
+          <span>3 Seasons</span>
+          <span>4K</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crown & Country -->
+    <div class="series-card">
+      <img class="series-image" alt="Historical drama set in royal palace" src="https://source.unsplash.com/random/500x700?palace" width="500" height="700">
+      <div class="badge">Coming Soon</div>
+      <div class="series-info">
+        <div class="series-title">Crown & Country</div>
+        <div class="series-meta">
+          <span class="match">92% Match</span>
+          <span>4 Seasons</span>
+          <span>4K</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Laugh Track -->
+    <div class="series-card">
+      <img class="series-image" alt="Comedy club stage with microphone" src="https://source.unsplash.com/random/500x700?comedy" width="500" height="700">
+      <div class="series-info">
+        <div class="series-title">Laugh Track</div>
+        <div class="series-meta">
+          <span class="match">88% Match</span>
+          <span>2 Seasons</span>
+          <span>HD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+// Filter functionality
+document.querySelectorAll('.filter-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    // Remove active class from all buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    // Add active class to clicked button
+    button.classList.add('active');
+    
+    // In a real application, this would filter the content
+    const genre = button.textContent.toLowerCase();
+    filterContent(genre);
+  });
+});
+
+function filterContent(genre) {
+  const cards = document.querySelectorAll('.series-card');
+  if (genre === 'all') {
+    cards.forEach(card => card.style.display = 'block');
+    return;
+  }
+  
+  // Simulate filtering (in a real app, this would check actual genres)
+  cards.forEach(card => {
+    const shouldShow = Math.random() > 0.5; // Random show/hide for demo
+    card.style.display = shouldShow ? 'block' : 'none';
+  });
+}
+
+// Hover effect with trailer preview (simulated)
+document.querySelectorAll('.series-card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    const image = card.querySelector('.series-image');
+    // In a real app, this would show a video preview
+    image.style.opacity = '0.7';
+  });
+
+  card.addEventListener('mouseleave', () => {
+    const image = card.querySelector('.series-image');
+    image.style.opacity = '1';
+  });
+
+  card.addEventListener('click', () => {
+    const title = card.querySelector('.series-title').textContent;
+    window.location.href = `https://movieflix.com/watch/series/${title.toLowerCase().replace(/\s+/g, '-')}`;
+  });
+});
+</script>
+</body>
+</html>

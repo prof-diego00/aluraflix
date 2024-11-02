@@ -191,3 +191,40 @@ hr {
     --verde-marinho-degrade: linear-gradient(to right bottom, #022859, #002e52, #002e3c, #002b20, #022601);)    
 }
 
+button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(175, 76, 76, 0.445);
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+button {
+    /* ... */
+    content: "\f106"; /* Ícone da seta para cima do Font Awesome */
+    font-family: "Font Awesome 6 Pro";
+}
+footer {
+    background-color: #000000;
+    text-align: center;
+    size: 50px;
+}
+
+.container-footer {
+    text-align: center;
+    padding: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.logo img {
+    width: 300px;
+}
