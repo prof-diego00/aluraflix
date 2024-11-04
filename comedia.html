@@ -344,9 +344,14 @@ p {
     object-position: center;
 }
 </style>
+<script>
+  function scrollToTop() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+</script>
 </head>
 <body>
-  <a href="#home" class="scroll-to-top">↑</a>
+  <a href="#home" onclick="scrollToTop()" class="scroll-to-top">↑</a>
   <header class="cabeçalho">
     <div class="container">
       <input type="checkbox" id="menu" class="container__botao">
@@ -670,9 +675,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     <div class="container-footer">
         <div class="logo">
             <img src="logo-newton.png" alt="Escola Newton Prado" title="E. E. Newton Prado">
-        </div>
-        <div class="copyright">
-            &copy; 2024 Aluraflix ©. Todos os direitos reservados.
+            <h4>2024 Aluraflix ©. Todos os direitos reservados.</h4>
+          </div>
         </div>
     </div>
   </footer>

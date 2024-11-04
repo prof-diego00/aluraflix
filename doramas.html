@@ -297,11 +297,15 @@ p {
 .categoria h2 {
     color: rgb(197, 53, 53);
 }
-
 </style>
+<script>
+  function scrollToTop() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+</script>
 </head>
 <body>
-  <a href="#home" class="scroll-to-top">↑</a>
+  <a href="#home" onclick="scrollToTop()" class="scroll-to-top">↑</a>
   <header class="cabeçalho">
     <div class="container">
       <input type="checkbox" id="menu" class="container__botao">
@@ -454,8 +458,8 @@ p {
     <div class="scroll-dot" data-section="Park-Seo-Joon"></div>
     <div class="scroll-dot" data-section="Pretendente-Surpresa"></div>
     <div class="scroll-dot" data-section="Love-Next-Door"></div>
-    <div class="scroll-dot" data-section="#"></div>
-    <div class="scroll-dot" data-section="#"></div>
+    <div class="scroll-dot" data-section="Noiva-por-Vingança"></div>
+    <div class="scroll-dot" data-section="A-Ultima-Missao"></div>
   </div>
 
   <section id="Nosso-Destino"  class="dorama">
@@ -611,9 +615,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     <div class="container-footer">
         <div class="logo">
             <img src="logo-newton.png" alt="Escola Newton Prado" title="E. E. Newton Prado">
-        </div>
-        <div class="copyright">
-            &copy; 2024 Aluraflix ©. Todos os direitos reservados.
+            <h4>2024 Aluraflix ©. Todos os direitos reservados.</h4>
+          </div>
         </div>
     </div>
   </footer>
