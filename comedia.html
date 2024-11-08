@@ -52,6 +52,17 @@ p {
   position: relative;
   text-shadow: #141414;
 }
+h1 {
+  text-shadow: #000;
+  padding: 20px;
+  text-align: center;
+}
+.h1-preto {
+  color: #000;
+  text-shadow: #ebdede;
+  padding: 20px;
+  text-align: center;
+}
 .movie-grid {
   margin-top: 3rem;
   display: grid;
@@ -221,8 +232,25 @@ p {
   flex-shrink: 0; /* Evita que o card seja comprimido se houver espaço insuficiente */
 }
 
-#o-duble {
-  background-color: #F2B705;
+#to-de-graça {
+    background-color: #4e96e25e;
+    background-image: url(https://www.oficialhostgeek.com.br/wp-content/uploads/2024/06/Imagem-de-Corpo-18.png);
+    background-size: cover; /* Adjust the value as needed */
+    color: #fdfdfd;
+    text-shadow: #000000;
+    padding: 20px;
+    text-align: justify;
+    background-repeat: no-repeat; /* Impede a repetição da imagem */
+  }
+  .marcado-to-de-graça {
+    color: #080808;
+    background-color: hsla(202, 66%, 85%, 0.692); /* Laranja claro */
+    padding: 3px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(129, 113, 113, 0.192);
+  }
+  #amor-com-data-marcada{
+  background-image: url(https://br.web.img2.acsta.net/r_1280_720/newsv7/20/10/28/17/06/5800190.jpg);
   background-size: cover; /* Adjust the value as needed */
   color: #fdfdfd;
   text-shadow: #000000;
@@ -230,38 +258,66 @@ p {
   text-align: justify;
   background-repeat: no-repeat; /* Impede a repetição da imagem */
 }
-#Free-guy {
-  background-color: #265C8C;
-  background-size: cover; /* Adjust the value as needed */
-  color: #ffffff;
-  padding: 20px;
-  text-align: justify;
-  background-repeat: no-repeat; /* Impede a repetição da imagem */
-}
-#Pretendente-Surpresa {
-  background-color: #BBDDF2;
-  background-size: cover; /* Adjust the value as needed */
-  color: #000000;
-  padding: 20px;
-  text-align: justify;
-  background-repeat: no-repeat; /* Impede a repetição da imagem */
-}
-#Love-Next-Door {
-  background-color: #F2B705;
-  background-size: cover; /* Adjust the value as needed */
-  color: #ffffff;
-  padding: 20px;
-  text-align: justify;
-  background-repeat: no-repeat; /* Impede a repetição da imagem */
-}
-.marcado {
-  color: #000;
-  background-color: hsla(202, 66%, 85%, 0.692); /* Laranja claro */
+.marcado-amor-com-data-marcada {
+  color: #fffdfd;
+  background-color: rgba(7, 113, 179, 0.822); /* Laranja claro */
   padding: 3px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
 }
-
+#Ate-que-a-Sorte-Nos-Separe {
+  background-image: url(https://www.papodecinema.com.br/wp-content/uploads/2012/09/leandro-hassum-tino-e-danielle-winits-jane-sao-os-protagonistas-da-comedia-romantica-ate-que-a-sorte-nos-separe-2012-1330444653202_1920x1080-e1552533502765.jpg);
+  background-size: cover; /* Adjust the value as needed */
+  color: #fdfdfd;
+  text-shadow: #000000;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+.marcado-Ate-que-a-Sorte-Nos-Separe{
+  color: #000;
+  background-color: rgba(167, 217, 208, 0.849); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
+}
+#Uma-Quase-Dupla {
+  background-image: url(https://bahiasocialvip.com.br/wp-content/uploads/2018/07/ADupla_CreditoSerendipityInc_PressRelease_00003.jpg);
+  background-size: cover; /* Adjust the value as needed */
+  color: #fdfdfd;
+  text-shadow: #000000;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+.marcado-Uma-Quase-Dupla {
+  color: #000;
+  background-color: rgba(139, 190, 221, 0.932); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
+}
+#Os-Farofeiros {
+  background-image: url(https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2024/02/os-farofeiros-2.jpg?w=1200&h=900&crop=1);
+  background-size: cover; /* Adjust the value as needed */
+  color: #fdfdfd;
+  text-shadow: #000000;
+  padding: 20px;
+  text-align: justify;
+  background-repeat: no-repeat; /* Impede a repetição da imagem */
+}
+.marcado-Os-Farofeiros {
+  color: #ffffff;
+  background-color: rgba(242, 93, 7, 0.74); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
+}
+.marcado-Os-Farofeiros-2 {
+  color: #ffffff;
+  background-color: rgba(228, 225, 223, 0.13); /* Laranja claro */
+  border-radius: 5px;
+}
 .comedia {
   background-color: #aaddec;
   color: #141414;
@@ -334,14 +390,24 @@ p {
   --light: #ffffff;
   --amarelo-degrade: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
   --amarelo-e-azul-degrade: linear-gradient(to right bottom, #010326, #3d1e49, #7f325f, #bf4d64, #f2785c);
+  --vermelho-e-laranja-degrade: linear-gradient(to right bottom, #f20c1f, #f22e1a, #f34114, #f2500e, #f25d07);
 }
 .chamada {
-    background:var(--amarelo-e-azul-degrade);
+    background-image: url(https://cinepop.com.br/wp-content/uploads/2020/12/poster.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
     margin: auto;
     padding-top: 2px;
     display: flex;
     justify-content: center;
     object-position: center;
+}
+.marcado-chamada {
+  color: #f8f8f8;
+  background-color: rgba(242, 5, 5, 0.507); /* Laranja claro */
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.192);
 }
 </style>
 <script>
@@ -390,11 +456,11 @@ p {
 </section>
 <section class="chamada">
   <div class="chamada-texto">
-      <h1>Free Guy - Assumindo o Controle</h1>
-      <p>Em Free Guy - Assumindo o Controle, Guy é um personagem não-jogador (NPC) em Free City, um jogo de RPG online multijogador massivo (MMORPG) desenvolvido pela Soonami Studio. Sem saber que o mundo em que vive é um videogame, ele trabalha como caixa de banco ao lado de seu melhor amigo, o segurança do banco Buddy, em uma entediante rotina. No mundo real, Millie Rusk está tentando encontrar evidências de que o código-fonte que ela escreveu junto com seu amigo Walter "Keys" McKey foi roubado pelo desenvolvedor chefe de Soonami, Antwan Hovachelik. No jogo, Millie, que joga como Molotov Girl, chama a atenção de Guy cantando sua música favorita, "Fantasy" de Mariah Carey, e ele começa a se desviar de sua programação. Pegando um par de óculos de sol de um jogador roubando o banco, Guy vê Free City através de uma versão única da interface do jogador e surpreendentemente vira um jogador. Agora ele precisa aceitar sua realidade e lidar com o fato de que é o único que pode salvar o mundo.</p>
+      <h1 class="h1-preto">10 Horas para o Natal</h1>
+      <p class="marcado-chamada">Em 10 Horas para o Natal, cansados de passar noites de Natal sem graça depois que seus pais se separaram, Julia (Giulia Benite), Miguel (Pedro Miranda) e Bia (Lorena Queiroz) bolam um plano para reunir novamente Marcos Henrique (Luis Lobianco) e Sônia (Karina Ramil) e, assim, relembrar os velhos tempos em que esperavam o Papai Noel como uma família. Mas, se quiserem colocar sua ideia em prática, os irmãos terão que correr contra o tempo, pois faltam apenas 10 horas para o Natal.</p>
   </div>
 <div style="text-align: center;" class="container">
-<iframe width="500" height="315" src="https://www.youtube.com/embed/iLcwgsQ0V28?si=v4uFnQBNE60csrx9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="500" height="315" src="https://www.youtube.com/embed/O_acdtwxelI?si=tefaOfbCAxtVZdak" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </a> 
 </div>
 </section>
@@ -511,61 +577,61 @@ p {
     <div class="progress-bar"></div>
   </div>
   <div class="scroll-indicator">
-    <div class="scroll-dot active" data-section="o-duble"></div>
-    <div class="scroll-dot" data-section="Park-Seo-Joon"></div>
-    <div class="scroll-dot" data-section="Pretendente-Surpresa"></div>
-    <div class="scroll-dot" data-section="Love-Next-Door"></div>
-    <div class="scroll-dot" data-section="#"></div>
-    <div class="scroll-dot" data-section="#"></div>
+    <div class="scroll-dot active" data-section="to-de-graça"></div>
+    <div class="scroll-dot" data-section="amor-com-data-marcada"></div>
+    <div class="scroll-dot" data-section="Ate-que-a-Sorte-Nos-Separe"></div>
+    <div class="scroll-dot" data-section="Uma-Quase-Dupla"></div>
+    <div class="scroll-dot" data-section="Os-Farofeiros"></div>
   </div>
 
-  <section id="o-duble" class="comedia">
+  <section id="to-de-graça" class="comedia">
     <div class="content fade-in">
-      <h1>O Dublê</h1>
+      <h1>Tô de Graça</h1>
       <div class="movie-container">
-      <img class="movie-card-pag" alt="O Dublê Trailer" title="O Dublê Trailer" src="https://br.web.img3.acsta.net/c_310_420/img/20/fd/20fd28beb20ff9ccf9f405fcf1820c49.jpg" width="200" height="300">
-      <p>Não recomendado para menos de 14 anos
-        O Dublê é um filme de ação e comédia dirigido por David Leitch (Trem-Bala, Deadpool 2) e baseado na série Duro na Queda, sucesso dos anos 80. A história acompanha Colt Seavers (Ryan Gosling), um dublê de Hollywood que precisou abandonar a vida de acrobacias perigosas após sofrer um acidente que quase acabou com a vida e a carreira dele. Porém, um tempo depois, ele é chamado de volta para trabalhar em um filme dirigido por sua ex-namorada, Jody Moreno (Emily Blunt), realizando as cenas mais intensas de ação de Tom Ryder (Aaron Taylor-Johnson), protagonista do longa. Durante as filmagens, este herói da classe trabalhadora abraçou a missão e a responsabilidade de desvendar um grande mistério: o desaparecimento misterioso de Tom. E, enquanto grava suas sequências e tenta entender o sumiço do astro de Hollywood, Colt descobre que pode ter se envolvido em algo muito maior do que um simples trabalho como dublê, tudo isso enquanto tenta reconquistar o amor da sua vida.</p>
+      <img class="movie-card-pag" alt="to-de-graça" title="to-de-graça" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQprr2rlj6YuB-p07hf_vMZ37gQsIaBfB7muQ&s" width="200" height="300">
+      <p class="marcado-to-de-graça">Tô de Graça - O Filme é uma produção inspirada na série homônima de televisão e dirigida por César Rodrigues (Minha Mãe é Uma Peça 2). Na trama,Graça (Rodrigo Sant’Anna) é uma mãe de 14 filhos e moradora do subúrbio do Rio de Janeiro. Depois de ganhar uma indenização inesperada, ela decide torrar o dinheiro levando toda a família para um feriadão em Búzios-RJ. Agora distante da comunidade onde se passaram as seis temporadas dessa personagem icônica, Graça mostrará várias confusões causadas pela família que quer aproveitar a viagem ao máximo</p>
+    </div>
+  </div>
+  </section>
+
+  <section id="amor-com-data-marcada" class="comedia">
+    <div class="content fade-in">
+      <h1>Amor Com Data Marcada</h1>
+      <div class="movie-container">
+      <img class="movie-card-pag" alt="Amor Com Data Marcada" title="O Dublê Trailer" src="https://media.fstatic.com/5x_EA9jDI9iyx2kcoG0q3ucWG8I=/210x312/smart/filters:format(webp)/media/movies/covers/2021/02/8f6c60bd66d06a73fe16c93c046aa656_L.jpg" width="200" height="300">
+      <p class="marcado-amor-com-data-marcada">Em Amor Com Data Marcada, Sloane (Emma Roberts) é uma ácida jovem que gosta de sua vida de solteira, acreditando não precisar de namorado. Jackson (Luke Bracey) é um solteiro divertido que foge de relacionamentos. Quando a pressão de amigos e familiares cresce para que eles encontrem um amor, os dois fazem um acordo: ser o par um do outro em ocasiões especiais. Mas o que fazer quando novos e indesejados sentimentos começam a surgir entre eles?</p>
     </div>
     </div>
   </section>
 
-  <section id="Free-Guy" class="comedia">
+  <section id="Ate-que-a-Sorte-Nos-Separe" class="comedia">
     <div class="content fade-in">
-      <h1>Free Guy - Assumindo o Controle</h1>
+      <h1 class="h1-preto">Até que a Sorte Nos Separe</h1>
       <div class="movie-container">
-      <img class="movie-card-pag" alt="Free Guy - Assumindo o Controle" title="Free Guy - Assumindo o Controle" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
-      <p>Texto sinopse sobre o Filme/Série</p>
+      <img class="movie-card-pag" alt="Até que a Sorte Nos Separe" title="Até que a Sorte Nos Separe" src="https://upload.wikimedia.org/wikipedia/pt/a/ad/Cartaz_AQASNS.jpg" width="200" height="300">
+      <p class="marcado-Ate-que-a-Sorte-Nos-Separe">Tino é um pai de família que tem sua rotina transformada ao ganhar na loteria. Em dez anos, o fanfarrão e sua mulher Jane gastam todo o dinheiro com uma vida de ostentação. Quando descobre que está falido, ele é obrigado a aceitar a ajuda de seu vizinho Amauri, um consultor financeiro nada divertido e extremamente econômico. Jane engravida do terceiro filho e Tino faz de tudo para esconder da esposa que estão na pior, pois a recomendação médica é que a grávida evite fortes emoções.</p>
     </div>
     </div>
   </section>
 
-  <section id="NOME DA SERIE/FILME" class="comedia">
+  <section id="Uma-Quase-Dupla" class="comedia">
     <div class="content fade-in">
-      <h1>NOME DA SERIE/FILME</h1>
+      <h1>Uma Quase Dupla</h1>
       <div class="movie-container">
-      <img class="movie-card-pag" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
-      <p>Texto sinopse sobre o Filme/Série</p>
+      <img class="movie-card-pag" alt="Uma Quase Dupla" title="Uma Quase Dupla" src="https://upload.wikimedia.org/wikipedia/pt/f/f7/Uma_Quase_Dupla.jpg" width="200" height="300">
+      <p class="marcado-Uma-Quase-Dupla">
+        Quando uma série de assassinatos abala a bucólica rotina da cidade de Joinlândia, o calmo e pacato subdelegado Claudio (Cauã Reymond) recebe a ajuda da destemida e experiente investigadora Keyla (Tatá Werneck) nas investigações. No entanto, a diferença de ritmo e a falta de química dos dois só atrapalha a solução do misterioso caso.
+    </p>
     </div>
     </div>
   </section>
 
-  <section id="NOME DA SERIE/FILME" class="comedia">
+  <section id="Os-Farofeiros" class="comedia">
     <div class="content fade-in">
-      <h1>NOME DA SERIE/FILME</h1>
+      <h1 class="marcado-Os-Farofeiros-2">Os Farofeiros</h1>
       <div class="movie-container">
-      <img class="movie-card-pag" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
-      <p>Texto sinopse sobre o Filme/Série</p>
-    </div>
-    </div>
-  </section>
-
-  <section id="NOME DA SERIE/FILME" class="comedia">
-    <div class="content fade-in">
-      <h1>NOME DA SERIE/FILME</h1>
-      <div class="movie-container">
-      <img class="movie-card-pag" alt="NOME DA SERIE/FILME" title="NOME DA SERIE/FILME" src="https://www.shutterstock.com/image-vector/coming-soon-photo-icon-loading-600nw-2231518481.jpg" width="200" height="300">
-      <p>Texto sinopse sobre o Filme/Série</p>
+      <img class="movie-card-pag" alt="Os Farofeiros" title="Os Farofeiros" src="https://br.web.img3.acsta.net/pictures/18/01/03/19/24/3938254.jpg" width="200" height="300">
+      <p class="marcado-Os-Farofeiros">Quatro colegas de trabalho se programam para curtir o feriado prolongado em uma casa de praia e, chegando lá, descobrem que se meteram em uma tremenda roubada. Para começar o destino não é Búzios, mas Maringuaba; a residência alugada é encontrada caindo aos pedaços, bem diferente do prometido; a praia está sempre cheia; e as confusões são inúmeras.</p>
     </div>
     </div>
   </section>
@@ -647,27 +713,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 <section class="tópicos">
     <h2 class="tópicos__titulo">TÓPICOS VISITADOS RECENTEMENTE</h2>
     <ul class="tópicos__lista">
-      <li class="tópicos__item"><a href="#" class="tópicos__link">Android</a></li>
+      <li class="tópicos__item"><a href="#" class="tópicos__link">Os Farofeiros</a></li>
       <li class="tópicos__item">
-        <a href="#" class="tópicos__link">Marketing Digital</a>
+        <a href="#" class="tópicos__link">Até que a Sorte Nos Separe</a>
       </li>
       <li class="tópicos__item">
-        <a href="#" class="tópicos__link">Agile</a>
+        <a href="#" class="tópicos__link">Amor Com Data Marcada</a>
       </li>
       <li class="tópicos__item">
-        <a href="#" class="tópicos__link">Startups</a>
+        <a href="#" class="tópicos__link">Tô de Graça</a>
       </li>
       <li class="tópicos__item">
-        <a href="#" class="tópicos__link">HTML & CSS</a>
+        <a href="#" class="tópicos__link">Vizinhos</a>
       </li>
       <li class="tópicos__item">
-        <a href="#" class="tópicos__link">Python</a>
+        <a href="#" class="tópicos__link">Norbit - Uma Comédia de Peso</a>
       </li>
       <li class="tópicos__item">
-        <a href="#" class="tópicos__link">OO</a>
+        <a href="#" class="tópicos__link">O Mentiroso</a>
       </li>
       <li class="tópicos__item">
-        <a href="#" class="tópicos__link">Java</a>
+        <a href="#" class="tópicos__link">Cabras da Peste</a>
       </li>
     </ul>
   </section>
